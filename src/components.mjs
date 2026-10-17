@@ -7,7 +7,7 @@ export function interactiveHero(data) {
       <p class="hero-kicker">FULL-STACK DEVELOPER · KARACHI, PAKISTAN</p>
       <h1 id="hero-name">Atta<br><em>Muhammad</em><span>.</span></h1>
       <p class="hero-statement">Web & mobile applications.<br><span>Made to be experienced.</span></p>
-      <p class="hero-description">${escape(data.intro)}<br>Explore what I’m building, and the journey behind it.</p>
+      <p class="hero-description">${escape(data.intro)}<br> Explore what I’m building, and the journey behind it.</p>
       <div class="hero-cta"><a class="button button-dark" href="#work">Explore my work <span aria-hidden="true">↓</span></a><a class="text-link" href="/journey/">My journey ${arrow}</a></div>
       <div class="hero-footnote"><span class="mini-orbit" aria-hidden="true">✳</span><p>Developer by practice.<br><strong>Always a student of the craft.</strong></p></div>
     </div>
@@ -49,3 +49,4 @@ export function projectDialog(projects) {
   const records=projects.map(({slug,name,number,category,summary,stack,features,live,source,image,androidApk})=>({slug,name,number,category,summary,stack,features,live,source,image,androidApk:!!androidApk}));
   return `<dialog class="project-dialog" id="project-dialog" aria-labelledby="quick-title"><div class="dialog-top"><span class="eyebrow">PROJECT QUICK LOOK</span><form method="dialog"><button class="dialog-close" aria-label="Close project preview">✕</button></form></div><div class="quick-layout"><div class="quick-media" id="quick-media"></div><div class="quick-copy"><p class="eyebrow" id="quick-category"></p><h2 id="quick-title"></h2><p id="quick-summary"></p><div class="tags" id="quick-tags"></div><ul id="quick-features"></ul><a class="button button-dark" id="quick-case" href="/#work">Read the case study <span aria-hidden="true">→</span></a><div class="quick-links"><a class="text-link" id="quick-live" target="_blank" rel="noopener noreferrer">Open live demo ↗</a><a class="text-link" id="quick-source" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div></div><div class="dialog-bottom"><span id="quick-count"></span><div><button type="button" id="quick-prev" aria-label="Previous project">←</button><button type="button" id="quick-next" aria-label="Next project">→</button></div></div></dialog><script id="project-data" type="application/json">${JSON.stringify(records).replace(/</g,'\\u003c')}</script>`;
 }
+
