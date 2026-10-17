@@ -1,5 +1,6 @@
 import {Scene,PerspectiveCamera,WebGLRenderer,Group,Mesh,MeshStandardMaterial,MeshBasicMaterial,HemisphereLight,DirectionalLight,PointLight,PlaneGeometry,SphereGeometry,TorusGeometry,CanvasTexture,SRGBColorSpace,ACESFilmicToneMapping,MathUtils} from 'three';
 import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
+export {initStackWorld} from './stack-3d.js';
 
 export async function initProjectWorld(world, options) {
   const canvas = world.querySelector('canvas');
@@ -17,8 +18,8 @@ export async function initProjectWorld(world, options) {
   const key = new DirectionalLight(0xffffff,4.2); key.position.set(-3,5,5); scene.add(key);
   const rim = new DirectionalLight(0xc5e6a4,3.4); rim.position.set(4,2,-2); scene.add(rim);
   const fill = new PointLight(0xffe3b1,18,12); fill.position.set(2,-2,4); scene.add(fill);
-  const green = new MeshStandardMaterial({color:0x254c3f,metalness:.48,roughness:.29});
-  const edge = new MeshStandardMaterial({color:0x778b5d,metalness:.5,roughness:.38});
+  const green = new MeshStandardMaterial({color:0x426b50,metalness:.48,roughness:.29});
+  const edge = new MeshStandardMaterial({color:0xa6bc80,metalness:.5,roughness:.38});
   const dark = new MeshStandardMaterial({color:0x142b24,metalness:.34,roughness:.33});
   const cream = new MeshStandardMaterial({color:0xdce5c7,metalness:.2,roughness:.49});
   const glow = new MeshStandardMaterial({color:0xb0c987,metalness:.35,roughness:.25});
@@ -98,12 +99,20 @@ export async function initProjectWorld(world, options) {
   assembly.add(orbit);
   const projects=JSON.parse(document.getElementById('project-data').textContent);
   const models=new Map();
+  const readyModels=new Set();
   const modelFor=p=>{
-    if(!models.has(p.slug))models.set(p.slug,(p.slug==='technova'?mobileProject():webProject(p)).then(group=>{group.visible=false;assembly.add(group);return group;}));
+    if(!models.has(p.slug))models.set(p.slug,(p.slug==='technova'?mobileProject():webProject(p)).then(group=>{
+      group.visible=false;
+      group.children.forEach((child,i)=>{
+        child.userData.home=child.position.clone();
+        child.userData.shift=p.slug==='technova'?[child.position.x*.27,(i-1)*.12,(i-1)*.3]:[i>2?(i===3?.52:-.16):-.1*i,i===3?-.22:0,i===0?.28:i<3?-i*.48:.3];
+      });
+      readyModels.add(group);assembly.add(group);return group;
+    }));
     return models.get(p.slug);
   };
   let motion=options.motion,visible=true,frame=0,previous=0,time=0;
-  let targetYaw=0,targetPitch=0,yaw=0,pitch=0,pointerX=0,pointerY=0;
+  let targetYaw=0,targetPitch=0,yaw=0,pitch=0,pointerX=0,pointerY=0,spread=0,targetSpread=0;
   let drag=null,activeSlug,selection=0,transition=1;
   const controls=world.querySelector('.world-controls');
   const links=[...document.querySelectorAll('[data-scene-project]')];
@@ -114,13 +123,15 @@ export async function initProjectWorld(world, options) {
     frame=0;if(document.hidden||!visible)return;
     const delta=Math.min((timestamp-(previous||timestamp))/1000,.05);previous=timestamp;
     if(motion)time+=delta;
-    yaw=MathUtils.lerp(yaw,targetYaw,.10);pitch=MathUtils.lerp(pitch,targetPitch,.10);transition=MathUtils.lerp(transition,1,.10);
-    assembly.rotation.set(-.055+pitch+(motion?pointerY*.025:0),-.22+yaw+(motion?pointerX*.045:0),-.035);
+    yaw=MathUtils.lerp(yaw,targetYaw,.10);pitch=MathUtils.lerp(pitch,targetPitch,.10);transition=MathUtils.lerp(transition,1,.10);spread=motion?MathUtils.lerp(spread,targetSpread,.075):targetSpread;
+    assembly.rotation.set(-.055+pitch+(motion?pointerY*.045+Math.sin(time*.24)*.035:0),-.22+yaw+(motion?pointerX*.085+Math.sin(time*.18)*.07:0),-.035);
     assembly.position.y=(1-transition)*-.18;
     assembly.scale.setScalar(.96+transition*.04);
-    floating.forEach(({object,phase,y})=>{if(object.parent?.visible)object.position.y=y+(motion?Math.sin(time*.62+phase)*.045:0);});
+    readyModels.forEach(model=>{if(model.visible)model.children.forEach(child=>{const base=child.userData.home,offset=child.userData.shift;child.position.set(base.x+offset[0]*spread,base.y+offset[1]*spread,base.z+offset[2]*spread);});});
+    floating.forEach(({object,phase})=>{if(object.parent?.visible)object.position.y+=(motion?Math.sin(time*.72+phase)*.075:0);});
+    ring.rotation.z=-.40+(motion?Math.sin(time*.16)*.1:0);
     renderer.render(scene,camera);canvas.dataset.rendered='true';
-    if(motion||Math.abs(yaw-targetYaw)+Math.abs(pitch-targetPitch)>.001||transition<.999)request();
+    if(motion||Math.abs(yaw-targetYaw)+Math.abs(pitch-targetPitch)+Math.abs(spread-targetSpread)>.001||transition<.999)request();
   }
   function updateCaption(p){
     document.getElementById('lab-title').textContent=p.name;
@@ -144,7 +155,10 @@ export async function initProjectWorld(world, options) {
   await select(projects[0].slug,false);
   resize();canvas.hidden=false;world.classList.add('is-ready');world.dataset.renderMode='webgl';controls.hidden=false;
   links.forEach(link=>link.addEventListener('click',event=>{event.preventDefault();select(link.dataset.sceneProject).catch(()=>{location.href=link.href;});},{signal}));
-  const reset=()=>{targetYaw=targetPitch=pointerX=pointerY=0;request();};
+  const spreadButton=world.querySelector('[data-world-spread]');
+  function setSpread(value){targetSpread=value;spreadButton.setAttribute('aria-pressed',String(!!value));spreadButton.textContent=value?'Assemble view':'Separate layers';world.dataset.layers=value?'separated':'assembled';request();}
+  spreadButton.addEventListener('click',()=>setSpread(targetSpread?0:1),{signal});
+  const reset=()=>{targetYaw=targetPitch=pointerX=pointerY=0;setSpread(0);request();};
   world.querySelectorAll('[data-world-rotate]').forEach(button=>button.addEventListener('click',()=>{targetYaw=MathUtils.clamp(targetYaw+Number(button.dataset.worldRotate)*.22,-.65,.65);request();},{signal}));
   world.querySelector('[data-world-reset]').addEventListener('click',reset,{signal});
   canvas.addEventListener('pointerdown',event=>{if(event.button!==0)return;drag={id:event.pointerId,x:event.clientX,y:event.clientY,yaw:targetYaw,pitch:targetPitch};canvas.setPointerCapture(event.pointerId);canvas.classList.add('is-dragging');},{signal});

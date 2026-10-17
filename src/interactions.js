@@ -1,4 +1,5 @@
 const root = document.documentElement;
+import('/premium.js').then(({startExperience})=>startExperience({motion}));
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let savedMotion;
 try { savedMotion = localStorage.getItem('atta-motion'); } catch {}
