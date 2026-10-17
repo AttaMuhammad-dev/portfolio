@@ -235,7 +235,7 @@
         "Firestore catalog and customer records"
       ],
       "contribution": "Launch work restored web configuration, added explicit demo behavior, removed automatic public catalog seeding, tested Firestore access rules and fixed a cart quantity issue. The Flutter interface also exposes browser accessibility semantics.",
-      "verification": "I previously tested the Android application using an Android emulator. Native iOS testing has not been performed. In the current browser demo, the catalog, mobile layout, search, product details, add-to-cart, sign-in page and checkout form were checked. The cart quantity regression test and release web build passed. An Android release APK was also built and its package metadata and signature verified; a fresh device run of this package is pending. Additionally, and Firestore rules passed 19 emulator access checks. New-customer signup and completed live order submission remain to be checked.",
+      "verification": "I previously tested the Android application using an Android emulator. Native iOS testing has not been performed. In the current browser demo, the catalog, mobile layout, search, product details, add-to-cart, sign-in page and checkout form were checked. The cart quantity regression test and release web build passed. An Android release APK was also built and its package metadata and signature verified; a fresh device run of this package is pending. Additionally, Firestore rules passed 19 emulator access checks. New-customer signup and completed live order submission remain to be checked.",
       "limitations": [
         "Demo checkout only: no real payment processing or fulfillment.",
         "AI API, external image uploads and public reviews are not enabled.",
@@ -332,3 +332,4 @@
   ],
   "googleSiteVerification": "wQIL13Sp_4Kel6oyHozxkvAIXvvxPIrGZMMq9Z-CRTE"
 }
+

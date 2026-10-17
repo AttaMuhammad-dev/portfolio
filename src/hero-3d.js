@@ -109,7 +109,7 @@ export async function initProjectWorld(world, options) {
   const links=[...document.querySelectorAll('[data-scene-project]')];
   const abort=new AbortController(); const signal=abort.signal;
   const request=()=>{if(!frame&&!document.hidden&&visible)frame=requestAnimationFrame(draw);};
-  function resize(){const w=world.clientWidth,h=world.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();request();}
+  function resize(){const w=world.clientWidth,h=world.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.position.z=Math.max(8.7,3.25/(Math.tan(MathUtils.degToRad(camera.fov/2))*camera.aspect));camera.updateProjectionMatrix();request();}
   function draw(timestamp){
     frame=0;if(document.hidden||!visible)return;
     const delta=Math.min((timestamp-(previous||timestamp))/1000,.05);previous=timestamp;

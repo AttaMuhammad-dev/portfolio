@@ -59,7 +59,7 @@ Use the repository README for commands. Source links point to the prepared proje
 
 ## Verification
 
-I previously tested the Android application using an Android emulator. Native iOS testing has not been performed. In the current browser demo, the catalog, mobile layout, search, product details, add-to-cart, sign-in page and checkout form were checked. The cart quantity regression test and release web build passed. An Android release APK was also built and its package metadata and signature verified; a fresh device run of this package is pending. Additionally, and Firestore rules passed 19 emulator access checks. New-customer signup and completed live order submission remain to be checked.
+I previously tested the Android application using an Android emulator. Native iOS testing has not been performed. In the current browser demo, the catalog, mobile layout, search, product details, add-to-cart, sign-in page and checkout form were checked. The cart quantity regression test and release web build passed. An Android release APK was also built and its package metadata and signature verified; a fresh device run of this package is pending. Additionally, Firestore rules passed 19 emulator access checks. New-customer signup and completed live order submission remain to be checked.
 
 ## Current limitations
 
