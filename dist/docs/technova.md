@@ -5,7 +5,7 @@ A project in Atta Muhammad’s portfolio. Updated 17 October 2026.
 A Flutter electronics shopping application, branded Laptop Harbour in the app, with catalog browsing, comparison, a cart and demonstration checkout. Try the application through its browser demo.
 
 - Live demo: https://technova-laptop-harbour.vercel.app
-- Source: https://github.com/Jokerisstupid/TechNova-Ecommerce-App
+- Source: https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App
 - Case study: https://atta-muhammad-portfolio.vercel.app/projects/technova/
 
 ## The idea
@@ -37,6 +37,17 @@ Launch work restored web configuration, added explicit demo behavior, removed au
 2. Open product details, choose a quantity and add it to the cart.
 3. Explore demonstration checkout using sample information only; no purchase is made.
 
+## Install the demo
+
+- Android APK: https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App/releases/download/v3.0.0-demo.20261017/technova-android-demo-3.0.0.apk
+- Version 3.0.0; 59.7 MB; Android 7.0 or newer.
+- Direct demo distribution with a development certificate. Fresh device run pending.
+- SHA-256: 9ef1e876eb0b0e15cb99387769719d390ed04936164336177262fb95bd06fbb5
+
+On iPhone or iPad, open the browser demo in Safari, use Share then Add to Home Screen, leave Open as Web App on if offered, and tap Add. This is the browser application; native iOS testing has not been performed. Internet is needed for catalog and account features.
+
+Apple instructions: https://support.apple.com/guide/iphone/open-as-web-app-iphea86e5236/ios
+
 ## Setup overview
 
 1. Use a compatible Flutter SDK and install the package dependencies.
@@ -48,15 +59,15 @@ Use the repository README for commands. Prepared deployment source may be newer 
 
 ## Verification
 
-The public catalog, mobile layout, search, product details, add-to-cart, sign-in page and checkout form were checked. The cart quantity regression test and release build passed. Firestore rules passed 19 emulator access checks. New-customer signup and completed live order submission are still to be checked.
+I previously tested the Android application using an Android emulator. Native iOS testing has not been performed. In the current browser demo, the catalog, mobile layout, search, product details, add-to-cart, sign-in page and checkout form were checked. The cart quantity regression test and release web build passed. An Android release APK was also built and its package metadata and signature verified; a fresh device run of this package is pending. Additionally, and Firestore rules passed 19 emulator access checks. New-customer signup and completed live order submission remain to be checked.
 
 ## Current limitations
 
 - Demo checkout only: no real payment processing or fulfillment.
 - AI API, external image uploads and public reviews are not enabled.
-- This release is the web demo. Native Android/iOS configuration is not fully restored.
+- Android was previously tested in an emulator. The iPhone option uses the browser demo added to the Home Screen; a native iOS build has not been tested.
 
 ## Next improvements
 
 - Finish live account and sample-order checks.
-- Restore optional external integrations and review native platform setup.
+- Restore optional external integrations and continue Android device checks; native iOS testing is a future step.

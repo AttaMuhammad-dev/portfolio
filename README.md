@@ -29,3 +29,7 @@ The source repositories retain their existing ownership and attribution. Some pr
 ## Content tips
 
 Update `updated` (YYYY-MM-DD) when publishing a substantive revision. Footer, last-updated text and search metadata use that date. Existing launch notes and verification statements are historical; change them only after doing the corresponding work. To add a project, copy one complete project object, give it a unique slug and number, provide a real screenshot, and review the generated case study. Do not publish personal visitor data or private credentials in screenshots or notes.
+
+## Updating the Android download
+
+TechNova’s `androidApk` object in `content.json` holds the published GitHub release asset URL, version, size, Android minimum and SHA-256. Upload and verify a real replacement asset before changing this object. Rebuild the portfolio afterward. The APK is hosted as a release asset, outside the portfolio Git history and Sites archive. Keep native testing claims separate from illustrative browser device frames.

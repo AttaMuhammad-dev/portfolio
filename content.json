@@ -218,7 +218,7 @@
       "image": "technova-mobile.jpg",
       "imageAlt": "TechNova Flutter application shown at a phone screen size, with shopping categories, catalog and bottom navigation",
       "live": "https://technova-laptop-harbour.vercel.app",
-      "source": "https://github.com/Jokerisstupid/TechNova-Ecommerce-App",
+      "source": "https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App",
       "accent": "peach",
       "problem": "An e-commerce application connects many small interactions: discovering products, comparing options, changing quantities and recording an order. TechNova explores that end-to-end interface using Flutter and Firebase.",
       "features": [
@@ -235,11 +235,11 @@
         "Firestore catalog and customer records"
       ],
       "contribution": "Launch work restored web configuration, added explicit demo behavior, removed automatic public catalog seeding, tested Firestore access rules and fixed a cart quantity issue. The Flutter interface also exposes browser accessibility semantics.",
-      "verification": "The public catalog, mobile layout, search, product details, add-to-cart, sign-in page and checkout form were checked. The cart quantity regression test and release build passed. Firestore rules passed 19 emulator access checks. New-customer signup and completed live order submission are still to be checked.",
+      "verification": "I previously tested the Android application using an Android emulator. Native iOS testing has not been performed. In the current browser demo, the catalog, mobile layout, search, product details, add-to-cart, sign-in page and checkout form were checked. The cart quantity regression test and release web build passed. An Android release APK was also built and its package metadata and signature verified; a fresh device run of this package is pending. Additionally, and Firestore rules passed 19 emulator access checks. New-customer signup and completed live order submission remain to be checked.",
       "limitations": [
         "Demo checkout only: no real payment processing or fulfillment.",
         "AI API, external image uploads and public reviews are not enabled.",
-        "This release is the web demo. Native Android/iOS configuration is not fully restored."
+        "Android was previously tested in an emulator. The iPhone option uses the browser demo added to the Home Screen; a native iOS build has not been tested."
       ],
       "try": [
         "Open the live catalog, select a category and search for a product.",
@@ -248,7 +248,7 @@
       ],
       "next": [
         "Finish live account and sample-order checks.",
-        "Restore optional external integrations and review native platform setup."
+        "Restore optional external integrations and continue Android device checks; native iOS testing is a future step."
       ],
       "setup": [
         "Use a compatible Flutter SDK and install the package dependencies.",
@@ -257,7 +257,15 @@
         "Run the cart check, build a Flutter web release and deploy the static build/web directory."
       ],
       "status": "Live demo",
-      "statusDetail": "Catalog and cart checked · demonstration checkout only"
+      "statusDetail": "Android APK & browser demo · catalog and cart checked",
+      "originalSource": "https://github.com/Jokerisstupid/TechNova-Ecommerce-App",
+      "androidApk": {
+        "url": "https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App/releases/download/v3.0.0-demo.20261017/technova-android-demo-3.0.0.apk",
+        "version": "3.0.0",
+        "size": "59.7 MB",
+        "minimumAndroid": "7.0",
+        "sha256": "9ef1e876eb0b0e15cb99387769719d390ed04936164336177262fb95bd06fbb5"
+      }
     },
     {
       "slug": "edupredict",
