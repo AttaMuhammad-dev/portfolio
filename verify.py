@@ -25,7 +25,7 @@ for path,d in docs.items():
     if d.h1!=1:errors.append(rel+': needs exactly one h1')
     if not(d.title and d.description and len(d.canonical)==1):errors.append(rel+': missing SEO metadata')
     for image in d.images:
-        if not image.get('alt'):errors.append(rel+': missing image alt')
+        if 'alt' not in image or (not image['alt'] and image.get('aria-hidden')!='true'):errors.append(rel+': missing image alt or decorative annotation')
     for href in d.links:
         u=urlsplit(href)
         if u.scheme or u.netloc:continue
