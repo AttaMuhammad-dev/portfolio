@@ -43,7 +43,7 @@ Developed with an AI-assisted workflow, with hands-on work in testing, builds, d
 2. Install the pinned Node dependencies and configure required server-side provider settings privately.
 3. Run the documented checks and production build before deploying to Vercel.
 
-Use the repository README for commands. Prepared deployment source may be newer than the original public snapshot. Never commit environment credentials.
+Use the repository README for commands. Source links point to the prepared project repository. Never commit environment credentials.
 
 ## Verification
 

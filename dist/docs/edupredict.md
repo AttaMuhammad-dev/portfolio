@@ -5,7 +5,7 @@ A project in Atta Muhammad’s portfolio. Updated 17 October 2026.
 A Python and Flask educational analytics project with role-based dashboards, data workflows and synthetic prediction examples.
 
 - Live demo: https://edupredict-demo.vercel.app
-- Source: https://github.com/Jokerisstupid/EduPredict
+- Source: https://github.com/AttaMuhammad-dev/EduPredict
 - Case study: https://atta-muhammad-portfolio.vercel.app/projects/edupredict/
 
 ## The idea
@@ -44,7 +44,7 @@ Launch work moved secrets to environment variables, removed automatic default ac
 3. Use synthetic datasets and deliberately provision any staff roles; public registration is student-only.
 4. Deploy the Flask entrypoint with the provided Vercel configuration. Use durable storage before relying on uploaded files.
 
-Use the repository README for commands. Prepared deployment source may be newer than the original public snapshot. Never commit environment credentials.
+Use the repository README for commands. Source links point to the prepared project repository. Never commit environment credentials.
 
 ## Verification
 

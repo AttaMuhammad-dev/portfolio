@@ -55,7 +55,7 @@ Apple instructions: https://support.apple.com/guide/iphone/open-as-web-app-iphea
 3. Keep private provider credentials out of browser code; optional integrations are disabled in this demo.
 4. Run the cart check, build a Flutter web release and deploy the static build/web directory.
 
-Use the repository README for commands. Prepared deployment source may be newer than the original public snapshot. Never commit environment credentials.
+Use the repository README for commands. Source links point to the prepared project repository. Never commit environment credentials.
 
 ## Verification
 

@@ -286,7 +286,7 @@
       "image": "edupredict.jpg",
       "imageAlt": "EduPredict public home page introducing the educational analytics project",
       "live": "https://edupredict-demo.vercel.app",
-      "source": "https://github.com/Jokerisstupid/EduPredict",
+      "source": "https://github.com/AttaMuhammad-dev/EduPredict",
       "accent": "lilac",
       "problem": "Educational records can be difficult to turn into clear summaries. This learning project explores data preparation, role-based views and predictive examples using synthetic student data.",
       "features": [
@@ -326,7 +326,8 @@
         "Deploy the Flask entrypoint with the provided Vercel configuration. Use durable storage before relying on uploaded files."
       ],
       "status": "Live demo",
-      "statusDetail": "Student account and profile flows checked · synthetic examples"
+      "statusDetail": "Student account and profile flows checked · synthetic examples",
+      "originalSource": "https://github.com/Jokerisstupid/EduPredict"
     }
   ],
   "googleSiteVerification": "wQIL13Sp_4Kel6oyHozxkvAIXvvxPIrGZMMq9Z-CRTE"

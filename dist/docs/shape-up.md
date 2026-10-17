@@ -44,7 +44,7 @@ Built as a full-stack learning project. Launch work includes a serverless entryp
 3. Keep AI_ENABLED and EMAIL_ENABLED off unless their external services are configured and tested.
 4. Build the frontend and deploy the repository’s Vercel configuration.
 
-Use the repository README for commands. Prepared deployment source may be newer than the original public snapshot. Never commit environment credentials.
+Use the repository README for commands. Source links point to the prepared project repository. Never commit environment credentials.
 
 ## Verification
 
