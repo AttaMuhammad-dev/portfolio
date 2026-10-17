@@ -10,88 +10,315 @@
   "about": "I’m a Karachi-based developer and Computer Science student. My main direction is full-stack web development, supported by projects in Flutter, Firebase and Python. I recently completed Aptech’s ADSE program and I’m continuing my Intermediate studies at Commecs College.",
   "approach": "I use AI-assisted development tools alongside hands-on testing, debugging, builds and deployment. I’m continuing to strengthen my programming fundamentals and my understanding of the systems I build. These projects document that learning process, including what works today and what I’m improving next.",
   "skills": [
-    {"title":"Web applications","tools":"React · TypeScript · JavaScript · HTML · CSS","evidence":"Interfaces, responsive layouts and application state in Commecs AI Assistant and Shape Up."},
-    {"title":"Backend & data","tools":"Node.js · Express · Hono · MongoDB","evidence":"APIs, authentication and personal data workflows across the web projects."},
-    {"title":"Mobile & cross-platform","tools":"Flutter · Dart · Firebase · Provider","evidence":"TechNova’s shopping interface, catalog, cart and Firebase integration."},
-    {"title":"Python & analytics","tools":"Python · Flask · pandas · scikit-learn","evidence":"EduPredict’s educational data workflows and synthetic prediction examples."},
-    {"title":"AI integrations","tools":"Gemini API · Retrieval-augmented generation","evidence":"Source-linked college information in Commecs; AI integration work in Shape Up."},
-    {"title":"Delivery & collaboration","tools":"Git · GitHub · Vercel · Testing · Debugging","evidence":"Preparing applications for public demos and documenting setup and limitations."}
+    {
+      "title": "Web applications",
+      "tools": "React · TypeScript · JavaScript · HTML · CSS",
+      "evidence": "Interfaces, responsive layouts and application state in Commecs AI Assistant and Shape Up."
+    },
+    {
+      "title": "Backend & data",
+      "tools": "Node.js · Express · Hono · MongoDB",
+      "evidence": "APIs, authentication and personal data workflows across the web projects."
+    },
+    {
+      "title": "Mobile & cross-platform",
+      "tools": "Flutter · Dart · Firebase · Provider",
+      "evidence": "TechNova’s shopping interface, catalog, cart and Firebase integration."
+    },
+    {
+      "title": "Python & analytics",
+      "tools": "Python · Flask · pandas · scikit-learn",
+      "evidence": "EduPredict’s educational data workflows and synthetic prediction examples."
+    },
+    {
+      "title": "AI integrations",
+      "tools": "Gemini API · Retrieval-augmented generation",
+      "evidence": "Source-linked college information in Commecs; AI integration work in Shape Up."
+    },
+    {
+      "title": "Delivery & collaboration",
+      "tools": "Git · GitHub · Vercel · Testing · Debugging",
+      "evidence": "Preparing applications for public demos and documenting setup and limitations."
+    }
   ],
   "journey": [
-    {"date":"2023 — 2026","title":"Learning software development","org":"Aptech Pakistan · ADSE","text":"Started the Advanced Diploma in Software Engineering program in July 2023. Completed the program in October 2026; diploma issuance is pending.","type":"Education"},
-    {"date":"2025 — 2027 (expected)","title":"Computer Science studies","org":"Commecs College · Intermediate","text":"Studying Intermediate Computer Science alongside practical software development. Expected completion: June 2027.","type":"Education"},
-    {"date":"2026","title":"First workplace experience","org":"Voltaic Power · Internship","text":"Worked as a Web Enhancement & Digital Content Intern, supporting website improvements, user experience and digital content with the team.","type":"Experience"},
-    {"date":"2026","title":"Four projects across different stacks","org":"Web · Flutter · Python · AI","text":"Built a college information assistant, a fitness application, an electronics shopping demo and an educational analytics project.","type":"Projects"},
-    {"date":"October 2026","title":"Making the work accessible","org":"Public demos & portfolio","text":"Publishing project demos with source links, documentation and clear descriptions of their current capabilities. Continuing to improve integrations and the experience.","type":"Now"}
+    {
+      "date": "2023 — 2026",
+      "title": "Learning software development",
+      "org": "Aptech Pakistan · ADSE",
+      "text": "Started the Advanced Diploma in Software Engineering program in July 2023. Completed the program in October 2026; diploma issuance is pending.",
+      "type": "Education"
+    },
+    {
+      "date": "2025 — 2027 (expected)",
+      "title": "Computer Science studies",
+      "org": "Commecs College · Intermediate",
+      "text": "Studying Intermediate Computer Science alongside practical software development. Expected completion: June 2027.",
+      "type": "Education"
+    },
+    {
+      "date": "2026",
+      "title": "First workplace experience",
+      "org": "Voltaic Power · Internship",
+      "text": "Worked as a Web Enhancement & Digital Content Intern, supporting website improvements, user experience and digital content with the team.",
+      "type": "Experience"
+    },
+    {
+      "date": "2026",
+      "title": "Four projects across different stacks",
+      "org": "Web · Flutter · Python · AI",
+      "text": "Built a college information assistant, a fitness application, an electronics shopping demo and an educational analytics project.",
+      "type": "Projects"
+    },
+    {
+      "date": "October 2026",
+      "title": "Making the work accessible",
+      "org": "Public demos & portfolio",
+      "text": "Publishing project demos with source links, documentation and clear descriptions of their current capabilities. Continuing to improve integrations and the experience.",
+      "type": "Now"
+    }
   ],
   "projects": [
     {
-      "slug":"commecs-ai-assistant", "number":"01", "name":"Commecs AI Assistant", "category":"AI & full-stack web", "year":"2026", "period":"September — October 2026",
-      "tagline":"College information, with sources in reach.",
-      "summary":"A multilingual college information assistant that brings public college material into a conversational interface with links to its sources.",
-      "stack":["React","TypeScript","Hono","Gemini","RAG"], "image":"commecs.jpg", "imageAlt":"Commecs Assistant welcome screen, with program and admission prompts",
-      "live":"https://commecs-ai-assistant.vercel.app", "source":"https://github.com/AttaMuhammad-dev/Commecs-AI-Assistant", "accent":"sage",
-      "problem":"Students and parents need to find information across college pages and documents. This project explores a conversational way to access that material while keeping official sources available for checking.",
-      "features":["English, Urdu and Roman Urdu interaction","Source cards linking to public college material","A searchable college guide and dated saved-information fallbacks","Conversation management, optional local saving and Markdown export","Responsive interface, theme switching and contextual follow-ups"],
-      "architecture":["React / TypeScript interface","Hono API and retrieval logic","Public college material + Gemini File Search","Source-linked response / saved guide fallback"],
-      "contribution":"Developed with an AI-assisted workflow, with hands-on work in testing, builds, debugging and deployment. The source includes knowledge maintenance and operational documentation.",
-      "verification":"The public application is reachable. Production build and type checks passed. Three timeouts in the initial test run passed on a focused rerun; that rerun was not a repeat of the entire suite. Live model generation has not been re-evaluated in this launch review.",
-      "limitations":["An independent student project; it is not presented as an official college service.","Confirm fees, dates, eligibility and other time-sensitive information with the college.","Generated answers depend on the external model service and the freshness of the retrieved material."],
-      "try":["Open the live demo and browse the college guide.","Ask about a program or admission topic in your preferred supported language.","Open the source links and verify any time-sensitive information."],
-      "next":["Review knowledge freshness and evaluate current live answers.","Continue improving retrieval quality and response clarity."],
-      "setup":["Read the repository README and environment example.","Install the pinned Node dependencies and configure required server-side provider settings privately.","Run the documented checks and production build before deploying to Vercel."],
-      "status":"Live demo", "statusDetail":"Public interface and build checked · model availability depends on provider"
+      "slug": "commecs-ai-assistant",
+      "number": "01",
+      "name": "Commecs AI Assistant",
+      "category": "AI & full-stack web",
+      "year": "2026",
+      "period": "September — October 2026",
+      "tagline": "College information, with sources in reach.",
+      "summary": "A multilingual college information assistant that brings public college material into a conversational interface with links to its sources.",
+      "stack": [
+        "React",
+        "TypeScript",
+        "Hono",
+        "Gemini",
+        "RAG"
+      ],
+      "image": "commecs.jpg",
+      "imageAlt": "Commecs Assistant welcome screen, with program and admission prompts",
+      "live": "https://commecs-ai-assistant.vercel.app",
+      "source": "https://github.com/AttaMuhammad-dev/Commecs-AI-Assistant",
+      "accent": "sage",
+      "problem": "Students and parents need to find information across college pages and documents. This project explores a conversational way to access that material while keeping official sources available for checking.",
+      "features": [
+        "English, Urdu and Roman Urdu interaction",
+        "Source cards linking to public college material",
+        "A searchable college guide and dated saved-information fallbacks",
+        "Conversation management, optional local saving and Markdown export",
+        "Responsive interface, theme switching and contextual follow-ups"
+      ],
+      "architecture": [
+        "React / TypeScript interface",
+        "Hono API and retrieval logic",
+        "Public college material + Gemini File Search",
+        "Source-linked response / saved guide fallback"
+      ],
+      "contribution": "Developed with an AI-assisted workflow, with hands-on work in testing, builds, debugging and deployment. The source includes knowledge maintenance and operational documentation.",
+      "verification": "The public application is reachable. Production build and type checks passed. Three timeouts in the initial test run passed on a focused rerun; that rerun was not a repeat of the entire suite. Live model generation has not been re-evaluated in this launch review.",
+      "limitations": [
+        "An independent student project; it is not presented as an official college service.",
+        "Confirm fees, dates, eligibility and other time-sensitive information with the college.",
+        "Generated answers depend on the external model service and the freshness of the retrieved material."
+      ],
+      "try": [
+        "Open the live demo and browse the college guide.",
+        "Ask about a program or admission topic in your preferred supported language.",
+        "Open the source links and verify any time-sensitive information."
+      ],
+      "next": [
+        "Review knowledge freshness and evaluate current live answers.",
+        "Continue improving retrieval quality and response clarity."
+      ],
+      "setup": [
+        "Read the repository README and environment example.",
+        "Install the pinned Node dependencies and configure required server-side provider settings privately.",
+        "Run the documented checks and production build before deploying to Vercel."
+      ],
+      "status": "Live demo",
+      "statusDetail": "Public interface and build checked · model availability depends on provider"
     },
     {
-      "slug":"shape-up", "number":"02", "name":"Shape Up", "category":"Full-stack web", "year":"2026", "period":"March — May 2026",
-      "tagline":"A place for everyday fitness progress.",
-      "summary":"A MERN fitness project with personal daily logs, workout tools, nutrition features and calculators in one application.",
-      "stack":["React","Node.js","Express","MongoDB","Redux Toolkit"],"image":"shape-up.jpg","imageAlt":"Shape Up home page with Train Smarter, Live Better headline",
-      "live":"https://shape-up-demo-kappa.vercel.app","source":"https://github.com/AttaMuhammad-dev/shape-up-mern","originalSource":"https://github.com/Jokerisstupid/shape-up-mern","accent":"blue",
-      "problem":"Fitness information and daily progress are easy to scatter across different tools. Shape Up brings personal logs, exercise browsing and basic calculators into one learning project.",
-      "features":["Account registration, login and personal profile","Daily logs for water, steps, calories and weight","Workout database and fitness calculators","Nutrition-related tools and progress views","An AI coaching integration with a clear unavailable-service state"],
-      "architecture":["React + Redux Toolkit frontend","Same-origin Express API on Vercel","Cookie-based authentication","Dedicated MongoDB Atlas demo database"],
-      "contribution":"Built as a full-stack learning project. Launch work includes a serverless entrypoint, reusable database connections, request limits, deployment configuration and a visible demo notice. The professional repository retains the original history and attribution.",
-      "verification":"Live synthetic registration, authenticated profile access, saving and reading a personal log, logout and login passed on 17 October 2026. An anonymous profile request was rejected. The frontend build and three deployment checks also passed.",
-      "limitations":["AI service/API unavailable in this demo. Provider integration updates are planned separately.","Email delivery is disabled. Use invented sample details when exploring.","Fitness and nutrition outputs are project demonstrations, not individual medical guidance."],
-      "try":["Browse workouts or try a calculator without signing in.","Create an account using invented sample details.","Save a daily water or steps log and check that it appears again."],
-      "next":["Restore and re-test the external AI integration.","Review remaining workflows and refine the interface."],
-      "setup":["Install backend and frontend dependencies using the repository instructions.","Configure MONGO_URI and a strong JWT_SECRET privately; use a dedicated demo database.","Keep AI_ENABLED and EMAIL_ENABLED off unless their external services are configured and tested.","Build the frontend and deploy the repository’s Vercel configuration."],
-      "status":"Live demo", "statusDetail":"Account and personal log flows checked · AI API unavailable"
+      "slug": "shape-up",
+      "number": "02",
+      "name": "Shape Up",
+      "category": "Full-stack web",
+      "year": "2026",
+      "period": "March — May 2026",
+      "tagline": "A place for everyday fitness progress.",
+      "summary": "A MERN fitness project with personal daily logs, workout tools, nutrition features and calculators in one application.",
+      "stack": [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Redux Toolkit"
+      ],
+      "image": "shape-up.jpg",
+      "imageAlt": "Shape Up home page with Train Smarter, Live Better headline",
+      "live": "https://shape-up-demo-kappa.vercel.app",
+      "source": "https://github.com/AttaMuhammad-dev/shape-up-mern",
+      "originalSource": "https://github.com/Jokerisstupid/shape-up-mern",
+      "accent": "blue",
+      "problem": "Fitness information and daily progress are easy to scatter across different tools. Shape Up brings personal logs, exercise browsing and basic calculators into one learning project.",
+      "features": [
+        "Account registration, login and personal profile",
+        "Daily logs for water, steps, calories and weight",
+        "Workout database and fitness calculators",
+        "Nutrition-related tools and progress views",
+        "An AI coaching integration with a clear unavailable-service state"
+      ],
+      "architecture": [
+        "React + Redux Toolkit frontend",
+        "Same-origin Express API on Vercel",
+        "Cookie-based authentication",
+        "Dedicated MongoDB Atlas demo database"
+      ],
+      "contribution": "Built as a full-stack learning project. Launch work includes a serverless entrypoint, reusable database connections, request limits, deployment configuration and a visible demo notice. The professional repository retains the original history and attribution.",
+      "verification": "Live synthetic registration, authenticated profile access, saving and reading a personal log, logout and login passed on 17 October 2026. An anonymous profile request was rejected. The frontend build and three deployment checks also passed.",
+      "limitations": [
+        "AI service/API unavailable in this demo. Provider integration updates are planned separately.",
+        "Email delivery is disabled. Use invented sample details when exploring.",
+        "Fitness and nutrition outputs are project demonstrations, not individual medical guidance."
+      ],
+      "try": [
+        "Browse workouts or try a calculator without signing in.",
+        "Create an account using invented sample details.",
+        "Save a daily water or steps log and check that it appears again."
+      ],
+      "next": [
+        "Restore and re-test the external AI integration.",
+        "Review remaining workflows and refine the interface."
+      ],
+      "setup": [
+        "Install backend and frontend dependencies using the repository instructions.",
+        "Configure MONGO_URI and a strong JWT_SECRET privately; use a dedicated demo database.",
+        "Keep AI_ENABLED and EMAIL_ENABLED off unless their external services are configured and tested.",
+        "Build the frontend and deploy the repository’s Vercel configuration."
+      ],
+      "status": "Live demo",
+      "statusDetail": "Account and personal log flows checked · AI API unavailable"
     },
     {
-      "slug":"technova", "number":"03", "name":"TechNova", "category":"Flutter & Firebase", "year":"2026", "period":"January — March 2026",
-      "tagline":"Exploring the complete shopping journey.",
-      "summary":"A Flutter electronics shopping project, branded Laptop Harbour in the app, with catalog browsing, comparison, a cart and demonstration checkout.",
-      "stack":["Flutter","Dart","Firebase","Firestore","Provider"],"image":"technova.jpg","imageAlt":"Laptop Harbour live electronics catalog with product categories and top-rated items",
-      "live":"https://technova-laptop-harbour.vercel.app","source":"https://github.com/Jokerisstupid/TechNova-Ecommerce-App","accent":"peach",
-      "problem":"An e-commerce application connects many small interactions: discovering products, comparing options, changing quantities and recording an order. TechNova explores that end-to-end interface using Flutter and Firebase.",
-      "features":["Electronics catalog, categories and search","Product details and product comparison","Cart with quantity management","Firebase authentication and customer record workflows","Admin inventory screens and demonstration order flow"],
-      "architecture":["Flutter web interface","Provider state management","Firebase Authentication","Firestore catalog and customer records"],
-      "contribution":"Launch work restored web configuration, added explicit demo behavior, removed automatic public catalog seeding, tested Firestore access rules and fixed a cart quantity issue. The Flutter interface also exposes browser accessibility semantics.",
-      "verification":"The public catalog, mobile layout, search, product details, add-to-cart, sign-in page and checkout form were checked. The cart quantity regression test and release build passed. Firestore rules passed 19 emulator access checks. New-customer signup and completed live order submission are still to be checked.",
-      "limitations":["Demo checkout only: no real payment processing or fulfillment.","AI API, external image uploads and public reviews are not enabled.","This release is the web demo. Native Android/iOS configuration is not fully restored."],
-      "try":["Open the live catalog, select a category and search for a product.","Open product details, choose a quantity and add it to the cart.","Explore demonstration checkout using sample information only; no purchase is made."],
-      "next":["Finish live account and sample-order checks.","Restore optional external integrations and review native platform setup."],
-      "setup":["Use a compatible Flutter SDK and install the package dependencies.","Configure a Firebase web application and publish tested Firestore rules for your own project.","Keep private provider credentials out of browser code; optional integrations are disabled in this demo.","Run the cart check, build a Flutter web release and deploy the static build/web directory."],
-      "status":"Live demo", "statusDetail":"Catalog and cart checked · demonstration checkout only"
+      "slug": "technova",
+      "number": "03",
+      "name": "TechNova",
+      "category": "Flutter application",
+      "year": "2026",
+      "period": "January — March 2026",
+      "tagline": "Exploring the complete shopping journey.",
+      "summary": "A Flutter electronics shopping application, branded Laptop Harbour in the app, with catalog browsing, comparison, a cart and demonstration checkout. Try the application through its browser demo.",
+      "stack": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Firestore",
+        "Provider"
+      ],
+      "image": "technova-mobile.jpg",
+      "imageAlt": "TechNova Flutter application shown at a phone screen size, with shopping categories, catalog and bottom navigation",
+      "live": "https://technova-laptop-harbour.vercel.app",
+      "source": "https://github.com/Jokerisstupid/TechNova-Ecommerce-App",
+      "accent": "peach",
+      "problem": "An e-commerce application connects many small interactions: discovering products, comparing options, changing quantities and recording an order. TechNova explores that end-to-end interface using Flutter and Firebase.",
+      "features": [
+        "Electronics catalog, categories and search",
+        "Product details and product comparison",
+        "Cart with quantity management",
+        "Firebase authentication and customer record workflows",
+        "Admin inventory screens and demonstration order flow"
+      ],
+      "architecture": [
+        "Flutter application · browser-accessible demo",
+        "Provider state management",
+        "Firebase Authentication",
+        "Firestore catalog and customer records"
+      ],
+      "contribution": "Launch work restored web configuration, added explicit demo behavior, removed automatic public catalog seeding, tested Firestore access rules and fixed a cart quantity issue. The Flutter interface also exposes browser accessibility semantics.",
+      "verification": "The public catalog, mobile layout, search, product details, add-to-cart, sign-in page and checkout form were checked. The cart quantity regression test and release build passed. Firestore rules passed 19 emulator access checks. New-customer signup and completed live order submission are still to be checked.",
+      "limitations": [
+        "Demo checkout only: no real payment processing or fulfillment.",
+        "AI API, external image uploads and public reviews are not enabled.",
+        "This release is the web demo. Native Android/iOS configuration is not fully restored."
+      ],
+      "try": [
+        "Open the live catalog, select a category and search for a product.",
+        "Open product details, choose a quantity and add it to the cart.",
+        "Explore demonstration checkout using sample information only; no purchase is made."
+      ],
+      "next": [
+        "Finish live account and sample-order checks.",
+        "Restore optional external integrations and review native platform setup."
+      ],
+      "setup": [
+        "Use a compatible Flutter SDK and install the package dependencies.",
+        "Configure a Firebase web application and publish tested Firestore rules for your own project.",
+        "Keep private provider credentials out of browser code; optional integrations are disabled in this demo.",
+        "Run the cart check, build a Flutter web release and deploy the static build/web directory."
+      ],
+      "status": "Live demo",
+      "statusDetail": "Catalog and cart checked · demonstration checkout only"
     },
     {
-      "slug":"edupredict", "number":"04", "name":"EduPredict", "category":"Python & analytics", "year":"2026", "period":"August — October 2026",
-      "tagline":"Making educational data easier to explore.",
-      "summary":"A Python and Flask educational analytics project with role-based dashboards, data workflows and synthetic prediction examples.",
-      "stack":["Python","Flask","MongoDB","pandas","scikit-learn"],"image":"edupredict.jpg","imageAlt":"EduPredict public home page introducing the educational analytics project",
-      "live":"https://edupredict-demo.vercel.app","source":"https://github.com/Jokerisstupid/EduPredict","accent":"lilac",
-      "problem":"Educational records can be difficult to turn into clear summaries. This learning project explores data preparation, role-based views and predictive examples using synthetic student data.",
-      "features":["Student registration and role-based dashboards","Educational data and reporting workflows in the source","Synthetic models for risk, grade and demand examples","Staff-only analytics and prediction endpoints","Personal profile management for registered users"],
-      "architecture":["Server-rendered Flask interface","Authenticated routes and role checks","Dedicated MongoDB Atlas demo database","pandas / scikit-learn model workflows"],
-      "contribution":"Launch work moved secrets to environment variables, removed automatic default accounts, restricted staff functions and rebuilt saved models with the current pinned library version. Runtime files are kept outside public static storage.",
-      "verification":"Live synthetic registration, student login, dashboard loading, profile saving and reading, and logout passed on 17 October 2026. A student request to the staff prediction endpoint was blocked. Five isolated deployment checks passed locally.",
-      "limitations":["Use synthetic data only. Model demonstrations are not evidence of real-world student prediction accuracy.","The risk score includes a heuristic; it is not a calibrated dropout probability.","Public registration creates student accounts. Staff analytics are restricted; no public administrator password is supplied.","Email delivery is disabled. Uploaded files and generated reports on the free runtime are temporary."],
-      "try":["Browse the public project pages and architecture overview.","Register with invented sample details and sign in to the student area.","Update your sample profile. Read the source for restricted staff workflows."],
-      "next":["Prepare a safe, read-only showcase for staff analytics.","Review remaining reporting, assignment and upload workflows."],
-      "setup":["Install the pinned Python dependencies and read the repository setup notes.","Set MONGO_URI, DB_NAME and a strong SECRET_KEY privately. Keep email disabled until configured.","Use synthetic datasets and deliberately provision any staff roles; public registration is student-only.","Deploy the Flask entrypoint with the provided Vercel configuration. Use durable storage before relying on uploaded files."],
-      "status":"Live demo", "statusDetail":"Student account and profile flows checked · synthetic examples"
+      "slug": "edupredict",
+      "number": "04",
+      "name": "EduPredict",
+      "category": "Python & analytics",
+      "year": "2026",
+      "period": "August — October 2026",
+      "tagline": "Making educational data easier to explore.",
+      "summary": "A Python and Flask educational analytics project with role-based dashboards, data workflows and synthetic prediction examples.",
+      "stack": [
+        "Python",
+        "Flask",
+        "MongoDB",
+        "pandas",
+        "scikit-learn"
+      ],
+      "image": "edupredict.jpg",
+      "imageAlt": "EduPredict public home page introducing the educational analytics project",
+      "live": "https://edupredict-demo.vercel.app",
+      "source": "https://github.com/Jokerisstupid/EduPredict",
+      "accent": "lilac",
+      "problem": "Educational records can be difficult to turn into clear summaries. This learning project explores data preparation, role-based views and predictive examples using synthetic student data.",
+      "features": [
+        "Student registration and role-based dashboards",
+        "Educational data and reporting workflows in the source",
+        "Synthetic models for risk, grade and demand examples",
+        "Staff-only analytics and prediction endpoints",
+        "Personal profile management for registered users"
+      ],
+      "architecture": [
+        "Server-rendered Flask interface",
+        "Authenticated routes and role checks",
+        "Dedicated MongoDB Atlas demo database",
+        "pandas / scikit-learn model workflows"
+      ],
+      "contribution": "Launch work moved secrets to environment variables, removed automatic default accounts, restricted staff functions and rebuilt saved models with the current pinned library version. Runtime files are kept outside public static storage.",
+      "verification": "Live synthetic registration, student login, dashboard loading, profile saving and reading, and logout passed on 17 October 2026. A student request to the staff prediction endpoint was blocked. Five isolated deployment checks passed locally.",
+      "limitations": [
+        "Use synthetic data only. Model demonstrations are not evidence of real-world student prediction accuracy.",
+        "The risk score includes a heuristic; it is not a calibrated dropout probability.",
+        "Public registration creates student accounts. Staff analytics are restricted; no public administrator password is supplied.",
+        "Email delivery is disabled. Uploaded files and generated reports on the free runtime are temporary."
+      ],
+      "try": [
+        "Browse the public project pages and architecture overview.",
+        "Register with invented sample details and sign in to the student area.",
+        "Update your sample profile. Read the source for restricted staff workflows."
+      ],
+      "next": [
+        "Prepare a safe, read-only showcase for staff analytics.",
+        "Review remaining reporting, assignment and upload workflows."
+      ],
+      "setup": [
+        "Install the pinned Python dependencies and read the repository setup notes.",
+        "Set MONGO_URI, DB_NAME and a strong SECRET_KEY privately. Keep email disabled until configured.",
+        "Use synthetic datasets and deliberately provision any staff roles; public registration is student-only.",
+        "Deploy the Flask entrypoint with the provided Vercel configuration. Use durable storage before relying on uploaded files."
+      ],
+      "status": "Live demo",
+      "statusDetail": "Student account and profile flows checked · synthetic examples"
     }
   ]
 }

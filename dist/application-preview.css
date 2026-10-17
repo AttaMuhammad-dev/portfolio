@@ -1,0 +1,9 @@
+.project-visual.app-preview{padding-bottom:25px;min-height:390px;background:#e7dfd3}
+.app-preview .visual-top::after{content:'FLUTTER APPLICATION';position:absolute;left:26px;bottom:29px;font-size:9px;letter-spacing:.12em;font-weight:500;color:#52624c}
+.project-visual.app-preview img{width:148px;height:320px;aspect-ratio:390/844;margin:0 auto;object-fit:contain;border:6px solid #252923;border-radius:23px;box-shadow:0 15px 28px #23332b30;background:#0c0c0f}
+.project-visual.app-preview:hover img{transform:translateY(-4px)}
+.case-image.app-preview-case{background:#e7dfd3;padding-top:42px}
+.case-image.app-preview-case img{width:290px;height:auto;max-height:none;aspect-ratio:390/844;margin:auto;object-fit:contain;border:9px solid #252923;border-radius:38px;box-shadow:0 18px 35px #23332b30;background:#0c0c0f}
+.case-image.app-preview-case figcaption{text-align:center}
+@media(max-width:780px){.project-visual.app-preview{min-height:380px}.project-visual.app-preview img{height:306px;width:141px;max-height:none}.app-preview .visual-top::after{left:21px;bottom:23px;font-size:8px}.case-image.app-preview-case{padding-top:30px}.case-image.app-preview-case img{width:245px;border-width:7px;border-radius:31px}}
+@media(max-width:420px){.case-image.app-preview-case img{width:min(245px,100%)}}

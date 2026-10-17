@@ -2,7 +2,7 @@
 
 A project in Atta Muhammad’s portfolio. Updated 17 October 2026.
 
-A Flutter electronics shopping project, branded Laptop Harbour in the app, with catalog browsing, comparison, a cart and demonstration checkout.
+A Flutter electronics shopping application, branded Laptop Harbour in the app, with catalog browsing, comparison, a cart and demonstration checkout. Try the application through its browser demo.
 
 - Live demo: https://technova-laptop-harbour.vercel.app
 - Source: https://github.com/Jokerisstupid/TechNova-Ecommerce-App
@@ -22,7 +22,7 @@ An e-commerce application connects many small interactions: discovering products
 
 ## Architecture
 
-1. Flutter web interface
+1. Flutter application · browser-accessible demo
 2. Provider state management
 3. Firebase Authentication
 4. Firestore catalog and customer records
