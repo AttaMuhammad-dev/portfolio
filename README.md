@@ -25,6 +25,8 @@ Use Node.js 22 or newer. Run `npm ci --include=dev`, then `npm run build`. The b
 
 ## Publishing identity
 
+Use the GitHub account's verified commit address when publishing. This checkout uses the professional account's GitHub-provided numeric noreply address, so Vercel can associate commits with the project owner without exposing a personal email address.
+
 - Project ID: `appgprj_6ad323a087448191acc22f531b2d2fa6`
 - Primary public URL: https://atta-muhammad-portfolio.vercel.app
 - Sites mirror: https://atta-muhammad-portfolio.magic-wasp-3272.chatgpt.site (publisher succeeded; anonymous access returned Cloudflare 1010 in launch checks)
