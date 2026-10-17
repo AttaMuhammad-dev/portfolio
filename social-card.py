@@ -1,0 +1,17 @@
+from PIL import Image,ImageDraw,ImageFont
+from pathlib import Path
+im=Image.new('RGB',(1200,630),'#f7f4ed');d=ImageDraw.Draw(im)
+sans=lambda size:ImageFont.truetype('C:/Windows/Fonts/segoeui.ttf',size)
+bold=lambda size:ImageFont.truetype('C:/Windows/Fonts/seguisb.ttf',size)
+serif=lambda size:ImageFont.truetype('C:/Windows/Fonts/georgiai.ttf',size)
+d.rectangle((0,586,1200,630),fill='#183d34')
+d.text((65,48),'ATTA MUHAMMAD  /  PORTFOLIO',fill='#183d34',font=bold(17))
+d.line((65,99,1135,99),fill='#ccd2c3',width=1)
+d.text((60,132),'Atta',fill='#20241f',font=bold(118))
+d.text((50,253),'Muhammad',fill='#20241f',font=serif(132))
+d.ellipse((874,384,889,399),fill='#b6532c')
+d.text((67,463),'Software developer & Computer Science student',fill='#183d34',font=sans(28))
+d.text((67,510),'FULL-STACK WEB   /   FLUTTER   /   PYTHON',fill='#5c625a',font=sans(17))
+d.text((925,510),'KARACHI, PK',fill='#5c625a',font=sans(17))
+im.save(Path(__file__).parent/'dist/assets/social-card.png',optimize=True)
+print('Created portfolio social sharing card.')
