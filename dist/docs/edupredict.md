@@ -6,7 +6,7 @@ A Python and Flask educational analytics project with role-based dashboards, dat
 
 - Live demo: https://edupredict-demo.vercel.app
 - Source: https://github.com/Jokerisstupid/EduPredict
-- Case study: https://atta-muhammad-portfolio.magic-wasp-3272.chatgpt.site/projects/edupredict/
+- Case study: https://atta-muhammad-portfolio.vercel.app/projects/edupredict/
 
 ## The idea
 

@@ -1,9 +1,26 @@
-.project-visual.app-preview{padding-bottom:25px;min-height:390px;background:#e7dfd3}
-.app-preview .visual-top::after{content:'FLUTTER APPLICATION';position:absolute;left:26px;bottom:29px;font-size:9px;letter-spacing:.12em;font-weight:500;color:#52624c}
-.project-visual.app-preview img{width:148px;height:320px;aspect-ratio:390/844;margin:0 auto;object-fit:contain;border:6px solid #252923;border-radius:23px;box-shadow:0 15px 28px #23332b30;background:#0c0c0f}
-.project-visual.app-preview:hover img{transform:translateY(-4px)}
+/* Application previews show real demo captures inside illustrative device frames. */
+.project-visual.app-preview{padding-bottom:34px;min-height:360px;background:#e7dfd3}
+.device-group{display:flex;align-items:flex-end;justify-content:center;gap:4%;width:100%;max-width:900px;margin:27px auto 0}
+.device-unit{width:25%;flex:0 0 25%;min-width:0;text-align:center}
+.device-unit.tablet-unit{width:42%;flex-basis:42%}
+.device-unit>span{display:block;text-transform:uppercase;font-size:9px;letter-spacing:.12em;font-weight:600;color:#445a40;margin-top:13px;line-height:1.5}
+.device-screen{position:relative;overflow:hidden;background:#111418;border:5px solid #252923;border-radius:19px;box-shadow:0 13px 24px #23332b26}
+.device-screen.ios-frame{border-radius:23px}
+.device-screen.tablet-frame{border-radius:15px;border-width:6px}
+.project-visual .device-screen img,.case-image .device-screen img{display:block;width:100%;height:auto;max-height:none;aspect-ratio:auto;object-fit:contain;object-position:top;border:0;border-radius:0;box-shadow:none;transform:none}
+.android-frame::after{content:'';position:absolute;top:4px;left:calc(50% - 2px);width:4px;height:4px;background:#050608;border-radius:50%;box-shadow:0 0 0 1px #343838}
+.ios-frame::after{content:'';position:absolute;top:3px;left:33%;width:34%;height:7px;border-radius:0 0 7px 7px;background:#090b0c}
+.tablet-frame::after{content:'';position:absolute;top:-5px;left:50%;width:3px;height:3px;background:#636a66;border-radius:50%}
 .case-image.app-preview-case{background:#e7dfd3;padding-top:42px}
-.case-image.app-preview-case img{width:290px;height:auto;max-height:none;aspect-ratio:390/844;margin:auto;object-fit:contain;border:9px solid #252923;border-radius:38px;box-shadow:0 18px 35px #23332b30;background:#0c0c0f}
-.case-image.app-preview-case figcaption{text-align:center}
-@media(max-width:780px){.project-visual.app-preview{min-height:380px}.project-visual.app-preview img{height:306px;width:141px;max-height:none}.app-preview .visual-top::after{left:21px;bottom:23px;font-size:8px}.case-image.app-preview-case{padding-top:30px}.case-image.app-preview-case img{width:245px;border-width:7px;border-radius:31px}}
-@media(max-width:420px){.case-image.app-preview-case img{width:min(245px,100%)}}
+.case-image.app-preview-case .device-group{max-width:850px;margin-top:0;gap:5%}
+.case-image.app-preview-case .device-unit{width:24%;flex-basis:24%}
+.case-image.app-preview-case .tablet-unit{width:40%;flex-basis:40%}
+.case-image.app-preview-case .device-screen{border-width:7px;border-radius:28px}
+.case-image.app-preview-case .ios-frame{border-radius:34px}
+.case-image.app-preview-case .tablet-frame{border-radius:22px;border-width:9px}
+.case-image.app-preview-case .device-unit>span{font-size:11px;margin-top:18px}
+.case-image.app-preview-case figcaption{text-align:center;line-height:1.8}
+.project-visual.sage img{height:auto;aspect-ratio:1200/880;max-height:380px;object-fit:contain;object-position:center;background:#111e2e}
+.case-image.sage img{height:auto;max-height:none;object-fit:contain}
+@media(max-width:780px){.project-visual.app-preview{min-height:0;padding:20px 18px 32px}.device-group{margin-top:24px}.device-screen{border-width:4px;border-radius:15px}.device-screen.ios-frame{border-radius:18px}.device-screen.tablet-frame{border-width:4px;border-radius:12px}.device-unit>span{font-size:8px;letter-spacing:.09em;margin-top:11px}.case-image.app-preview-case{padding:29px 16px 17px}.case-image.app-preview-case .device-screen{border-width:4px;border-radius:17px}.case-image.app-preview-case .ios-frame{border-radius:20px}.case-image.app-preview-case .tablet-frame{border-radius:13px;border-width:5px}.case-image.app-preview-case .device-unit>span{font-size:8px;margin-top:12px}.project-visual.sage img{height:auto;max-height:none;aspect-ratio:1200/880}}
+@media(prefers-reduced-motion:reduce){.project-visual:hover .device-screen img{transform:none}}

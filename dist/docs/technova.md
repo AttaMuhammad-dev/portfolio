@@ -6,7 +6,7 @@ A Flutter electronics shopping application, branded Laptop Harbour in the app, w
 
 - Live demo: https://technova-laptop-harbour.vercel.app
 - Source: https://github.com/Jokerisstupid/TechNova-Ecommerce-App
-- Case study: https://atta-muhammad-portfolio.magic-wasp-3272.chatgpt.site/projects/technova/
+- Case study: https://atta-muhammad-portfolio.vercel.app/projects/technova/
 
 ## The idea
 

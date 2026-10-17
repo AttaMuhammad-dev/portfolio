@@ -6,7 +6,7 @@ A MERN fitness project with personal daily logs, workout tools, nutrition featur
 
 - Live demo: https://shape-up-demo-kappa.vercel.app
 - Source: https://github.com/AttaMuhammad-dev/shape-up-mern
-- Case study: https://atta-muhammad-portfolio.magic-wasp-3272.chatgpt.site/projects/shape-up/
+- Case study: https://atta-muhammad-portfolio.vercel.app/projects/shape-up/
 
 ## The idea
 

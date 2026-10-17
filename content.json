@@ -3,7 +3,7 @@
   "role": "Full-Stack Developer | Web & Cross-Platform Mobile Applications",
   "location": "Karachi, Pakistan",
   "updated": "2026-10-17",
-  "origin": "https://atta-muhammad-portfolio.magic-wasp-3272.chatgpt.site",
+  "origin": "https://atta-muhammad-portfolio.vercel.app",
   "linkedin": "https://www.linkedin.com/in/atta-muhammad-729b0b315/",
   "github": "https://github.com/AttaMuhammad-dev",
   "intro": "I build web and cross-platform mobile applications with MERN, Python/Flask and Flutter/Firebase.",
@@ -320,5 +320,6 @@
       "status": "Live demo",
       "statusDetail": "Student account and profile flows checked · synthetic examples"
     }
-  ]
+  ],
+  "googleSiteVerification": "wQIL13Sp_4Kel6oyHozxkvAIXvvxPIrGZMMq9Z-CRTE"
 }

@@ -6,7 +6,7 @@ A multilingual college information assistant that brings public college material
 
 - Live demo: https://commecs-ai-assistant.vercel.app
 - Source: https://github.com/AttaMuhammad-dev/Commecs-AI-Assistant
-- Case study: https://atta-muhammad-portfolio.magic-wasp-3272.chatgpt.site/projects/commecs-ai-assistant/
+- Case study: https://atta-muhammad-portfolio.vercel.app/projects/commecs-ai-assistant/
 
 ## The idea
 
