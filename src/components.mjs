@@ -5,7 +5,7 @@ export function interactiveHero(data) {
   return `<section class="immersive-hero shell" aria-labelledby="hero-name">
     <div class="hero-intro"><p class="eyebrow availability"><span class="status-dot"></span>OPEN TO JUNIOR & TRAINEE ROLES</p>
       <p class="hero-kicker">FULL-STACK DEVELOPER · KARACHI, PAKISTAN</p>
-      <h1 id="hero-name">Atta<br><em>Muhammad</em><span>.</span></h1>
+      <h1 id="hero-name">Atta<br><span class="hero-name-line"><em>Muhammad</em><span class="name-period">.</span></span></h1>
       <p class="hero-statement">Web & mobile applications.<br><span>Made to be experienced.</span></p>
       <p class="hero-description">${escape(data.intro)}<br> Explore what I’m building, and the journey behind it.</p>
       <div class="hero-cta"><a class="button button-dark" href="#work">Explore my work <span aria-hidden="true">↓</span></a><a class="text-link" href="/journey/">My journey ${arrow}</a></div>

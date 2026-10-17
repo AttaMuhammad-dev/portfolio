@@ -6,6 +6,7 @@
 @keyframes page-arrive{from{opacity:0;transform:translateY(19px) scale(1.005)}to{opacity:1;transform:none}}
 :root{--silk:cubic-bezier(.16,1,.3,1);--ink:#133c30;--gold:#d1dba7}
 main{position:relative;isolation:isolate}
+body[data-page="detail"] main{overflow:clip}
 body{background:#f6f3eb}
 ::selection{background:#ccd9ac;color:#163d30}
 .site-header{transition:background .5s var(--silk),box-shadow .5s var(--silk)}
@@ -30,6 +31,8 @@ body{background:#f6f3eb}
 .motion-enabled .kinetic-heading:not(.heading-visible) .heading-word{opacity:0;transform:translate3d(0,115%,0) rotateX(35deg)}
 .motion-enabled .kinetic-heading .heading-word{transition:transform 1.2s var(--silk),opacity .8s;transition-delay:calc(var(--word-order,0)*65ms)}
 .hero-intro h1>.word-mask{color:var(--green)}
+.hero-intro h1>.hero-name-line{display:inline-block;white-space:nowrap;vertical-align:top;color:var(--green)}
+.hero-name-line .name-period{color:var(--accent)}
 .hero-intro h1{font-size:clamp(82px,8.1vw,118px);line-height:.93;letter-spacing:-.075em}
 .hero-intro h1 em{color:#244936}
 .immersive-hero{padding-top:48px;gap:37px 65px;align-items:center}
