@@ -28,6 +28,7 @@ body{background:#f6f3eb}
 .motion-enabled .kinetic-heading:not(.heading-visible) .heading-word{opacity:0;transform:translate3d(0,115%,0) rotateX(35deg)}
 .motion-enabled .kinetic-heading .heading-word{transition:transform 1.2s var(--silk),opacity .8s;transition-delay:calc(var(--word-order,0)*65ms)}
 .hero-intro h1>.word-mask{color:var(--green)}
+.case-hero h1>.word-mask{color:var(--green)}
 .hero-intro h1>.hero-name-line{display:inline-block;white-space:nowrap;vertical-align:top;color:var(--green)}
 .hero-name-line .name-period{color:var(--accent)}
 .hero-intro h1{font-size:clamp(82px,8.1vw,118px);line-height:.93;letter-spacing:-.075em}
