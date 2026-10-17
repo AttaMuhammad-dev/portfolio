@@ -1,11 +1,8 @@
 /* A coordinated motion system: real content first, depth and movement as enhancement. */
-@view-transition{navigation:auto}
-::view-transition-old(root){animation:page-away .24s ease both}
-::view-transition-new(root){animation:page-arrive .65s cubic-bezier(.22,1,.36,1) both}
-@keyframes page-away{to{opacity:0;transform:translateY(-9px) scale(.995)}}
 @keyframes page-arrive{from{opacity:0;transform:translateY(19px) scale(1.005)}to{opacity:1;transform:none}}
 :root{--silk:cubic-bezier(.16,1,.3,1);--ink:#133c30;--gold:#d1dba7}
-main{position:relative;isolation:isolate}
+main{position:relative;isolation:isolate;animation:page-arrive .7s var(--silk) both}
+body.route-leaving main{opacity:0;transform:translateY(-10px);transition:opacity .2s ease,transform .3s ease;animation:none}
 body[data-page="detail"] main{overflow:clip}
 body{background:#f6f3eb}
 ::selection{background:#ccd9ac;color:#163d30}
@@ -298,7 +295,6 @@ body{background:#f6f3eb}
   .system-fallback{gap:7px}.system-fallback>span{font-size:9px;padding:35px 10px}
 }
 @media(hover:none){.pointer-halo{display:none}.project-visual{will-change:auto}}
-@media(prefers-reduced-motion:reduce){html:not(.motion-enabled)::view-transition-old(root),html:not(.motion-enabled)::view-transition-new(root){animation:none}}
 html.motion-paused .heading-word{opacity:1!important;transform:none!important}
 html.motion-paused .pointer-halo{opacity:0!important}
 html.motion-paused .project-visual,html.motion-paused .case-image,html.motion-paused .chapter-sculpture{transform:none!important}

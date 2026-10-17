@@ -8,6 +8,16 @@ export function startExperience({motion:initialMotion}) {
   let motion=initialMotion;
   document.documentElement.classList.add('experience-ready');
   document.addEventListener('portfolio:motion',event=>{motion=event.detail.enabled;updateDepth();});
+  let navigating=false;
+  document.addEventListener('click',event=>{
+    const link=event.target.closest('a[href]');
+    if(!motion||navigating||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||!link||link.target||link.hasAttribute('download'))return;
+    const destination=new URL(link.href);
+    if(destination.origin!==location.origin||destination.pathname===location.pathname)return;
+    event.preventDefault();navigating=true;document.body.classList.add('route-leaving');
+    setTimeout(()=>location.assign(destination.href),200);
+  });
+  addEventListener('pageshow',()=>{navigating=false;document.body.classList.remove('route-leaving');});
 
   document.querySelectorAll('.visual-depth>img,.case-image>img').forEach(img=>{
     const frame=document.createElement('div'),bar=document.createElement('div');frame.className='browser-frame';bar.className='browser-chrome';bar.setAttribute('aria-hidden','true');

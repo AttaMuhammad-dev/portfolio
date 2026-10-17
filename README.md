@@ -2,7 +2,7 @@
 
 A pre-rendered portfolio with an optional interactive Three.js project scene. Main content, links, documentation, and native skill disclosures work without JavaScript. JavaScript adds project selection, quick-look dialogs, scroll transitions, device preview controls and navigation enhancements.
 
-The expanded visual system adds a dark 3D hero with an assemble/separate control, a second lazy-loaded WebGL architecture scene (web/mobile/retrieval), staggered heading reveals, a continuous technology ribbon, scroll-driven project depth, browser-frame previews, subtle magnetic links and cross-document view transitions where supported. Journey and project pages share sculptural accents and the same motion vocabulary. `src/premium.js`, `src/stack-3d.js` and `dist/premium.css` own these additions. Both WebGL renderers suspend offscreen and in hidden tabs; the second scene initializes near its section. Reduced motion is respected initially, and the visitor can explicitly enable or pause animation using the header control.
+The expanded visual system adds a dark 3D hero with an assemble/separate control, a second lazy-loaded WebGL architecture scene (web/mobile/retrieval), staggered heading reveals, a continuous technology ribbon, scroll-driven project depth, browser-frame previews, subtle magnetic links and progressive page-entry and internal-navigation transitions. Journey and project pages share sculptural accents and the same motion vocabulary. `src/premium.js`, `src/stack-3d.js` and `dist/premium.css` own these additions. Both WebGL renderers suspend offscreen and in hidden tabs; the second scene initializes near its section. Reduced motion is respected initially, and the visitor can explicitly enable or pause animation using the header control.
 
 ## Build
 
@@ -50,3 +50,4 @@ Update `updated` (YYYY-MM-DD) when publishing a substantive revision. Footer, la
 ## Updating the Android download
 
 TechNova’s `androidApk` object in `content.json` holds the published GitHub release asset URL, version, size, Android minimum and SHA-256. Upload and verify a real replacement asset before changing this object. Rebuild the portfolio afterward. The APK is hosted as a release asset, outside the portfolio Git history and Sites archive. Keep native testing claims separate from illustrative browser device frames.
+
