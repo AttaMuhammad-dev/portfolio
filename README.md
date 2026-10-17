@@ -55,5 +55,7 @@ TechNova’s `androidApk` object in `content.json` holds the published GitHub re
 
 `src/seo.mjs` defines homepage/project search titles and descriptions and the linked WebSite, ProfilePage/Person, page, breadcrumb and project structured data. These describe visible, verified content; do not add unearned credentials, ratings or artificial keyword pages. The site remains pre-rendered and readable without scripts. Primary canonical URLs, sitemap and Google ownership verification stay in the build. The 404 document is excluded from indexing. The footer links to LinkedIn and GitHub; project source links remain within their project sections.
 
+When changing profile information, update `profileUpdatedAt` in `content.json` with the actual ISO 8601 date, time and timezone. Keep `updated` as the date for the visible footer and sitemap. Google requires the full timestamp for ProfilePage's optional `dateModified`; a date alone produces a warning. Do not advance the profile timestamp automatically on every build.
+
 Search Console confirmed the homepage was indexed on 17 October 2026, with successful smartphone crawling, indexing allowed and the primary URL selected as canonical. The sitemap was successful with seven discovered pages. Discovery is not the same as indexing every page. Search appearance and ranking can change after later crawls; metadata changes and indexing requests do not guarantee a particular position.
 

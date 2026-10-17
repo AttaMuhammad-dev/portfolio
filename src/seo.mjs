@@ -15,6 +15,7 @@ export function pageStructuredData(data,path,title,description,profile){
   if(path==='/'){
     const {'@context':context,...profilePage}=profile;
     profilePage['@id']=pageId;profilePage.url=pageUrl;profilePage.name=title;profilePage.description=description;
+    profilePage.dateModified=data.profileUpdatedAt;
     profilePage.inLanguage='en';profilePage.isPartOf={'@id':websiteId};
     profilePage.mainEntity.description='Atta Muhammad is a full-stack web and cross-platform mobile developer and Computer Science student based in Karachi, Pakistan.';
     profilePage.mainEntity.knowsAbout=['Web development','MERN stack','React','TypeScript','Node.js','Python','Flask','Flutter','Dart','Firebase','Retrieval-augmented generation'];
