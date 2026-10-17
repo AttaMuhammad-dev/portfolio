@@ -1,32 +1,32 @@
 {
   "name": "Atta Muhammad",
-  "role": "Software developer & CS student",
+  "role": "Full-Stack Developer | Web & Cross-Platform Mobile Applications",
   "location": "Karachi, Pakistan",
   "updated": "2026-10-17",
   "origin": "https://atta-muhammad-portfolio.magic-wasp-3272.chatgpt.site",
   "linkedin": "https://www.linkedin.com/in/atta-muhammad-729b0b315/",
   "github": "https://github.com/AttaMuhammad-dev",
-  "intro": "I build full-stack web applications, explore Flutter and Python, and turn what I learn into working projects.",
-  "about": "I’m a Karachi-based developer and Computer Science student. My main direction is full-stack web development, supported by projects in Flutter, Firebase and Python. I recently completed Aptech’s ADSE program and I’m continuing my Intermediate studies at Commecs College.",
-  "approach": "I use AI-assisted development tools alongside hands-on testing, debugging, builds and deployment. I’m continuing to strengthen my programming fundamentals and my understanding of the systems I build. These projects document that learning process, including what works today and what I’m improving next.",
+  "intro": "I build web and cross-platform mobile applications with MERN, Python/Flask and Flutter/Firebase.",
+  "about": "I’m a full-stack developer and Computer Science student based in Karachi. I build web applications with MERN and Python/Flask, and cross-platform mobile applications with Flutter/Firebase. I recently completed Aptech’s ADSE program and I’m continuing my Intermediate studies at Commecs College.",
+  "approach": "My workflow combines AI-assisted development tools with hands-on implementation, debugging, testing and deployment. I focus on how interfaces, APIs, authentication and data fit together, and I keep improving my projects as I learn. Each case study explains the application, its current release and the next improvements.",
   "skills": [
     {
-      "title": "Web applications",
-      "tools": "React · TypeScript · JavaScript · HTML · CSS",
+      "title": "Web development",
+      "tools": "MERN · React · TypeScript · HTML · CSS",
       "evidence": "Interfaces, responsive layouts and application state in Commecs AI Assistant and Shape Up."
     },
     {
-      "title": "Backend & data",
-      "tools": "Node.js · Express · Hono · MongoDB",
+      "title": "APIs, services & data",
+      "tools": "Node.js · Express · Flask · Hono · MongoDB",
       "evidence": "APIs, authentication and personal data workflows across the web projects."
     },
     {
-      "title": "Mobile & cross-platform",
+      "title": "Cross-platform mobile",
       "tools": "Flutter · Dart · Firebase · Provider",
       "evidence": "TechNova’s shopping interface, catalog, cart and Firebase integration."
     },
     {
-      "title": "Python & analytics",
+      "title": "Python & data workflows",
       "tools": "Python · Flask · pandas · scikit-learn",
       "evidence": "EduPredict’s educational data workflows and synthetic prediction examples."
     },
