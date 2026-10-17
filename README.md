@@ -51,3 +51,9 @@ Update `updated` (YYYY-MM-DD) when publishing a substantive revision. Footer, la
 
 TechNova’s `androidApk` object in `content.json` holds the published GitHub release asset URL, version, size, Android minimum and SHA-256. Upload and verify a real replacement asset before changing this object. Rebuild the portfolio afterward. The APK is hosted as a release asset, outside the portfolio Git history and Sites archive. Keep native testing claims separate from illustrative browser device frames.
 
+## Search identity
+
+`src/seo.mjs` defines homepage/project search titles and descriptions and the linked WebSite, ProfilePage/Person, page, breadcrumb and project structured data. These describe visible, verified content; do not add unearned credentials, ratings or artificial keyword pages. The site remains pre-rendered and readable without scripts. Primary canonical URLs, sitemap and Google ownership verification stay in the build. The 404 document is excluded from indexing. The footer links to LinkedIn and GitHub; project source links remain within their project sections.
+
+Search Console confirmed the homepage was indexed on 17 October 2026, with successful smartphone crawling, indexing allowed and the primary URL selected as canonical. The sitemap was successful with seven discovered pages. Discovery is not the same as indexing every page. Search appearance and ranking can change after later crawls; metadata changes and indexing requests do not guarantee a particular position.
+
