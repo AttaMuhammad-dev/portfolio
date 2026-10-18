@@ -49,7 +49,9 @@ button, a, summary { -webkit-tap-highlight-color: #a7bd8233; }
 }
 
 /* Shorter entrances avoid blank sections while a visitor scrolls quickly. */
-main { animation-duration: 480ms; }
+main { animation-name: refined-page-arrive; animation-duration: 480ms; }
+@keyframes refined-page-arrive { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+body.route-leaving main { transition-duration: 140ms; }
 .motion-enabled .reveal-candidate:not(.is-revealed) { translate: 0 16px; }
 .motion-enabled .reveal-candidate {
   transition-duration: var(--motion-reveal); transition-timing-function: var(--motion-ease);
