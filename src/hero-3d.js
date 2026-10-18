@@ -5,7 +5,8 @@ export {initStackWorld} from './stack-3d.js';
 
 export async function initProjectWorld(world, options) {
   const canvas = world.querySelector('canvas');
-  let quality = sceneQuality();
+  const heroQuality=()=>sceneQuality({sharp:true,width:world.clientWidth,height:world.clientHeight});
+  let quality = heroQuality();
   const renderer = new WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});
   renderer.setPixelRatio(quality.pixelRatio);
   world.dataset.quality = quality.compact ? 'compact' : 'full';
@@ -35,12 +36,13 @@ export async function initProjectWorld(world, options) {
       const image = new Image(); image.src = url; await image.decode();
       const surface = document.createElement('canvas'); surface.width = w; surface.height = h;
       const context = surface.getContext('2d');
+      context.imageSmoothingEnabled = true; context.imageSmoothingQuality = 'high';
       context.fillStyle = '#11202c'; context.fillRect(0,0,w,h);
       const scale = Math.min(w / image.naturalWidth,h / image.naturalHeight);
       const width = image.naturalWidth * scale,height = image.naturalHeight * scale;
       context.drawImage(image,(w-width)/2,(h-height)/2,width,height);
       const map = new CanvasTexture(surface); map.colorSpace = SRGBColorSpace;
-      map.anisotropy = Math.min(4,renderer.capabilities.getMaxAnisotropy());
+      map.anisotropy = Math.min(16,renderer.capabilities.getMaxAnisotropy());
       return map;
     })();
     screenCache.set(id,promise); return promise;
@@ -64,7 +66,7 @@ export async function initProjectWorld(world, options) {
     const group = new Group();
     const browser = new Group();
     browser.add(box(4.30,3.05,.20,green,.11));
-    const map = await texture(`/assets/${p.image}`,quality.compact?768:1024,quality.compact?506:675);
+    const map = await texture(`/assets/${p.image}`,1536,1012);
     const display = plane(4.04,2.66,map); display.position.set(0,-.10,.106); browser.add(display);
     const toolbar = box(4.05,.16,.025,dark,.035); toolbar.position.set(0,1.31,.11); browser.add(toolbar);
     [rust,glow,cream].forEach((material,i)=>{const dot=ball(.024,material);dot.position.set(-1.85+i*.09,1.31,.14);browser.add(dot);});
@@ -124,8 +126,9 @@ export async function initProjectWorld(world, options) {
   let sizeKey='';
   function resize(){
     const w=world.clientWidth,h=world.clientHeight;if(!w||!h)return;
-    quality=sceneQuality();const key=`${w}:${h}:${quality.pixelRatio}`;if(key===sizeKey)return;sizeKey=key;
+    quality=heroQuality();const key=`${w}:${h}:${quality.pixelRatio}`;if(key===sizeKey)return;sizeKey=key;
     renderer.setPixelRatio(quality.pixelRatio);renderer.setSize(w,h,false);world.dataset.quality=quality.compact?'compact':'full';
+    world.dataset.pixelRatio=quality.pixelRatio.toFixed(2);
     camera.aspect=w/h;camera.position.z=Math.max(8.7,3.25/(Math.tan(MathUtils.degToRad(camera.fov/2))*camera.aspect));camera.updateProjectionMatrix();request();
   }
   function draw(timestamp){

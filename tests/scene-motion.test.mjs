@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {damp} from '../src/scene-motion.js';
+import {damp,sceneQuality} from '../src/scene-motion.js';
 
 test('the same one-second gesture settles equally on different refresh rates',()=>{
   const results=[30,60,120].map(rate=>{
@@ -10,6 +10,16 @@ test('the same one-second gesture settles equally on different refresh rates',()
   });
   assert.ok(results.every(value=>Math.abs(value-results[0])<1e-12));
   assert.ok(results[0]>.649 && results[0]<=.65);
+});
+
+test('hero keeps phone device density while bounding large render buffers',()=>{
+  globalThis.matchMedia=()=>({matches:true});
+  const phone=sceneQuality({sharp:true,width:390,height:330,ratio:3});
+  assert.equal(phone.pixelRatio,3);
+  const large=sceneQuality({sharp:true,width:1600,height:900,ratio:3});
+  assert.ok(1600*900*large.pixelRatio**2<=1_500_001);
+  assert.equal(phone.interval,1000/30);
+  delete globalThis.matchMedia;
 });
 
 test('easing does not overshoot during a slow frame or reverse movement',()=>{
