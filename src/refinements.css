@@ -5,7 +5,7 @@
   --motion-reveal: 650ms;
   --motion-ease: cubic-bezier(.22, 1, .36, 1);
 }
-html { scrollbar-gutter: stable; }
+html { scrollbar-gutter: stable; overflow-x: clip; }
 body { text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
 main, section, article, figure, .project-copy, .case-content, .system-story { min-inline-size: 0; }
 button, summary, a, input { touch-action: manipulation; }
@@ -143,6 +143,8 @@ body.route-leaving main { transition-duration: 140ms; }
   .hero-cta .button { padding: 13px 20px; font-size: 12px; min-height: 47px; }
   .hero-cta .text-link { font-size: 12px; }
   .build-lab { padding: 0 18px 16px; }
+  .motion-enabled .build-lab { animation-name: compact-stage-arrive; animation-duration: 750ms; }
+  @keyframes compact-stage-arrive { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
   .hero-world { height: clamp(310px, 75vw, 400px); margin-inline: -9px; }
   .world-controls { left: 10px; right: 10px; bottom: 8px; justify-content: center; }
   .world-controls .drag-hint { display: none; }
