@@ -1,11 +1,14 @@
 import {Scene,PerspectiveCamera,WebGLRenderer,Group,Mesh,MeshStandardMaterial,MeshBasicMaterial,HemisphereLight,DirectionalLight,PointLight,PlaneGeometry,SphereGeometry,TorusGeometry,CanvasTexture,SRGBColorSpace,ACESFilmicToneMapping,MathUtils} from 'three';
 import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
+import {damp,sceneQuality,animateSurface} from './scene-motion.js';
 export {initStackWorld} from './stack-3d.js';
 
 export async function initProjectWorld(world, options) {
   const canvas = world.querySelector('canvas');
+  let quality = sceneQuality();
   const renderer = new WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,1.65));
+  renderer.setPixelRatio(quality.pixelRatio);
+  world.dataset.quality = quality.compact ? 'compact' : 'full';
   renderer.outputColorSpace = SRGBColorSpace;
   renderer.toneMapping = ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.25;
@@ -61,7 +64,7 @@ export async function initProjectWorld(world, options) {
     const group = new Group();
     const browser = new Group();
     browser.add(box(4.30,3.05,.20,green,.11));
-    const map = await texture(`/assets/${p.image}`,1024,675);
+    const map = await texture(`/assets/${p.image}`,quality.compact?768:1024,quality.compact?506:675);
     const display = plane(4.04,2.66,map); display.position.set(0,-.10,.106); browser.add(display);
     const toolbar = box(4.05,.16,.025,dark,.035); toolbar.position.set(0,1.31,.11); browser.add(toolbar);
     [rust,glow,cream].forEach((material,i)=>{const dot=ball(.024,material);dot.position.set(-1.85+i*.09,1.31,.14);browser.add(dot);});
@@ -112,25 +115,34 @@ export async function initProjectWorld(world, options) {
     return models.get(p.slug);
   };
   let motion=options.motion,visible=true,frame=0,previous=0,time=0;
-  let targetYaw=0,targetPitch=0,yaw=0,pitch=0,pointerX=0,pointerY=0,spread=0,targetSpread=0;
+  let targetYaw=0,targetPitch=0,yaw=0,pitch=0,pointerX=0,pointerY=0,hoverX=0,hoverY=0,spread=0,targetSpread=0;
   let drag=null,activeSlug,selection=0,transition=1;
   const controls=world.querySelector('.world-controls');
   const links=[...document.querySelectorAll('[data-scene-project]')];
   const abort=new AbortController(); const signal=abort.signal;
   const request=()=>{if(!frame&&!document.hidden&&visible)frame=requestAnimationFrame(draw);};
-  function resize(){const w=world.clientWidth,h=world.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.position.z=Math.max(8.7,3.25/(Math.tan(MathUtils.degToRad(camera.fov/2))*camera.aspect));camera.updateProjectionMatrix();request();}
+  let sizeKey='';
+  function resize(){
+    const w=world.clientWidth,h=world.clientHeight;if(!w||!h)return;
+    quality=sceneQuality();const key=`${w}:${h}:${quality.pixelRatio}`;if(key===sizeKey)return;sizeKey=key;
+    renderer.setPixelRatio(quality.pixelRatio);renderer.setSize(w,h,false);world.dataset.quality=quality.compact?'compact':'full';
+    camera.aspect=w/h;camera.position.z=Math.max(8.7,3.25/(Math.tan(MathUtils.degToRad(camera.fov/2))*camera.aspect));camera.updateProjectionMatrix();request();
+  }
   function draw(timestamp){
     frame=0;if(document.hidden||!visible)return;
-    const delta=Math.min((timestamp-(previous||timestamp))/1000,.05);previous=timestamp;
+    if(motion&&previous&&timestamp-previous<quality.interval-1){request();return;}
+    const delta=Math.min(previous?(timestamp-previous)/1000:1/60,.08);previous=timestamp;
     if(motion)time+=delta;
-    yaw=MathUtils.lerp(yaw,targetYaw,.10);pitch=MathUtils.lerp(pitch,targetPitch,.10);transition=MathUtils.lerp(transition,1,.10);spread=motion?MathUtils.lerp(spread,targetSpread,.075):targetSpread;
-    assembly.rotation.set(-.055+pitch+(motion?pointerY*.045+Math.sin(time*.24)*.035:0),-.22+yaw+(motion?pointerX*.085+Math.sin(time*.18)*.07:0),-.035);
+    yaw=motion?damp(yaw,targetYaw,8,delta):targetYaw;pitch=motion?damp(pitch,targetPitch,8,delta):targetPitch;
+    transition=motion?damp(transition,1,8,delta):1;spread=motion?damp(spread,targetSpread,7,delta):targetSpread;
+    hoverX=damp(hoverX,pointerX,5,delta);hoverY=damp(hoverY,pointerY,5,delta);
+    assembly.rotation.set(-.055+pitch+(motion?hoverY*.04+Math.sin(time*.24)*.022:0),-.22+yaw+(motion?hoverX*.075+Math.sin(time*.18)*.045:0),-.035);
     assembly.position.y=(1-transition)*-.18;
     assembly.scale.setScalar(.96+transition*.04);
     readyModels.forEach(model=>{if(model.visible)model.children.forEach(child=>{const base=child.userData.home,offset=child.userData.shift;child.position.set(base.x+offset[0]*spread,base.y+offset[1]*spread,base.z+offset[2]*spread);});});
     floating.forEach(({object,phase})=>{if(object.parent?.visible)object.position.y+=(motion?Math.sin(time*.72+phase)*.075:0);});
     ring.rotation.z=-.40+(motion?Math.sin(time*.16)*.1:0);
-    renderer.render(scene,camera);canvas.dataset.rendered='true';
+    renderer.render(scene,camera);canvas.dataset.rendered='true';world.dataset.sceneState=motion?'playing':'still';
     if(motion||Math.abs(yaw-targetYaw)+Math.abs(pitch-targetPitch)+Math.abs(spread-targetSpread)>.001||transition<.999)request();
   }
   function updateCaption(p){
@@ -146,9 +158,9 @@ export async function initProjectWorld(world, options) {
     const p=projects.find(p=>p.slug===slug);if(!p)return;
     const token=++selection;
     const group=await modelFor(p);if(token!==selection)return;
-    for(const [key,promise] of models)promise.then(model=>{model.visible=key===slug;});
+    readyModels.forEach(model=>{model.visible=false;});
     group.visible=true;activeSlug=slug;world.dataset.sceneProject=slug;
-    updateCaption(p);transition=motion?0:1;
+    updateCaption(p);transition=motion?0:1;animateSurface(canvas,motion&&announce);
     if(announce)document.getElementById('scene-status').textContent=`Previewing ${p.name}. ${p.slug==='technova'?'Device frames show browser previews; native iOS testing is pending.':'Use the explore link to read the project.'}`;
     request();
   }
@@ -161,14 +173,29 @@ export async function initProjectWorld(world, options) {
   const reset=()=>{targetYaw=targetPitch=pointerX=pointerY=0;setSpread(0);request();};
   world.querySelectorAll('[data-world-rotate]').forEach(button=>button.addEventListener('click',()=>{targetYaw=MathUtils.clamp(targetYaw+Number(button.dataset.worldRotate)*.22,-.65,.65);request();},{signal}));
   world.querySelector('[data-world-reset]').addEventListener('click',reset,{signal});
-  canvas.addEventListener('pointerdown',event=>{if(event.button!==0)return;drag={id:event.pointerId,x:event.clientX,y:event.clientY,yaw:targetYaw,pitch:targetPitch};canvas.setPointerCapture(event.pointerId);canvas.classList.add('is-dragging');},{signal});
+  canvas.addEventListener('pointerdown',event=>{
+    if(event.button!==0||!event.isPrimary)return;
+    drag={id:event.pointerId,x:event.clientX,y:event.clientY,yaw:targetYaw,pitch:targetPitch,engaged:event.pointerType==='mouse'};
+    if(drag.engaged){canvas.setPointerCapture(event.pointerId);canvas.classList.add('is-dragging');}
+  },{signal});
   canvas.addEventListener('pointermove',event=>{
     const rect=canvas.getBoundingClientRect();
-    if(drag&&event.pointerId===drag.id){targetYaw=MathUtils.clamp(drag.yaw+(event.clientX-drag.x)*.004,-.65,.65);targetPitch=MathUtils.clamp(drag.pitch+(event.clientY-drag.y)*.0025,-.23,.23);request();}
+    if(drag&&event.pointerId===drag.id){
+      const dx=event.clientX-drag.x,dy=event.clientY-drag.y;
+      if(!drag.engaged){
+        // A vertical gesture belongs to the page. Only a deliberate horizontal drag rotates the model.
+        if(Math.abs(dy)>8&&Math.abs(dy)>Math.abs(dx)){drag=null;return;}
+        if(Math.abs(dx)<8||Math.abs(dx)<Math.abs(dy)*1.2)return;
+        drag.engaged=true;canvas.setPointerCapture(event.pointerId);canvas.classList.add('is-dragging');
+      }
+      targetYaw=MathUtils.clamp(drag.yaw+dx/rect.width*1.7,-.65,.65);
+      targetPitch=MathUtils.clamp(drag.pitch+dy/rect.height*.8,-.23,.23);request();
+    }
     else if(event.pointerType==='mouse'&&motion){pointerX=(event.clientX-rect.left)/rect.width-.5;pointerY=(event.clientY-rect.top)/rect.height-.5;request();}
   },{signal});
-  const release=()=>{drag=null;canvas.classList.remove('is-dragging');};
+  const release=()=>{if(drag&&canvas.hasPointerCapture(drag.id))canvas.releasePointerCapture(drag.id);drag=null;canvas.classList.remove('is-dragging');};
   canvas.addEventListener('pointerup',release,{signal});canvas.addEventListener('pointercancel',release,{signal});
+  canvas.addEventListener('lostpointercapture',()=>{drag=null;canvas.classList.remove('is-dragging');},{signal});
   canvas.addEventListener('pointerleave',()=>{pointerX=pointerY=0;request();},{signal});
   canvas.addEventListener('keydown',event=>{
     if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(event.key))return;
@@ -179,15 +206,15 @@ export async function initProjectWorld(world, options) {
     request();
   },{signal});
   const observer=new ResizeObserver(resize);observer.observe(world);
-  const visibility=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){previous=0;request();}else if(frame){cancelAnimationFrame(frame);frame=0;}},{threshold:0});visibility.observe(world);
-  document.addEventListener('portfolio:motion',event=>{motion=event.detail.enabled;request();},{signal});
+  const visibility=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){previous=0;request();}else{if(frame)cancelAnimationFrame(frame);frame=0;release();world.dataset.sceneState='offscreen';}},{threshold:0});visibility.observe(world);
+  document.addEventListener('portfolio:motion',event=>{motion=event.detail.enabled;previous=0;canvas.getAnimations().forEach(a=>a.cancel());request();},{signal});
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&frame){cancelAnimationFrame(frame);frame=0;}else{previous=0;request();}},{signal});
   canvas.addEventListener('webglcontextlost',event=>{
-    event.preventDefault();if(frame)cancelAnimationFrame(frame);frame=0;abort.abort();observer.disconnect();visibility.disconnect();
+    event.preventDefault();if(frame)cancelAnimationFrame(frame);frame=0;abort.abort();observer.disconnect();visibility.disconnect();renderer.dispose();
     canvas.hidden=true;controls.hidden=true;world.classList.remove('is-ready');world.dataset.renderMode='poster';updateCaption(projects[0]);
   },{once:true});
   // Warm the remaining small image textures after the first useful frame is visible.
-  const warm=()=>projects.filter(p=>p.slug!==activeSlug).forEach(p=>modelFor(p).catch(()=>{}));
+  const warm=()=>{if(!quality.compact&&!document.hidden)projects.filter(p=>p.slug!==activeSlug).forEach(p=>modelFor(p).catch(()=>{}));};
   if('requestIdleCallback' in window)requestIdleCallback(warm,{timeout:2200});else setTimeout(warm,1000);
   request();
 }

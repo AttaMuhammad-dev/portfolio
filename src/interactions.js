@@ -1,5 +1,4 @@
 const root = document.documentElement;
-import('/premium.js').then(({startExperience})=>startExperience({motion}));
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let savedMotion;
 try { savedMotion = localStorage.getItem('atta-motion'); } catch {}
@@ -9,6 +8,7 @@ function setMotion(enabled, remember = false) {
   motion = enabled;
   root.classList.toggle('motion-enabled', enabled);
   root.classList.toggle('motion-paused', !enabled);
+  if(!enabled)document.getAnimations().forEach(animation=>animation.cancel());
   if (motionButton) {
     motionButton.setAttribute('aria-pressed', String(!enabled));
     motionButton.setAttribute('aria-label', enabled ? 'Pause decorative motion' : 'Enable decorative motion');
@@ -36,6 +36,7 @@ if ('IntersectionObserver' in window) {
   });
 }
 setMotion(motion);
+import('/premium.js').then(({startExperience})=>startExperience({motion})).catch(()=>{});
 
 const filterBar = document.querySelector('.filter-bar');
 const rows = [...document.querySelectorAll('.project-row')];
@@ -46,7 +47,13 @@ if (filterBar) {
   buttons.forEach(button => button.addEventListener('click', () => {
     buttons.forEach(b => { b.classList.toggle('active',b === button); b.setAttribute('aria-pressed',String(b === button)); });
     let count = 0;
-    rows.forEach(row => { row.hidden = !matches(row.dataset.category,button.dataset.filter); if (!row.hidden) count++; });
+    rows.forEach(row => {
+      row.hidden = !matches(row.dataset.category,button.dataset.filter);
+      if (!row.hidden) {
+        count++; row.classList.add('is-revealed');
+        if(motion)row.animate([{opacity:.35,transform:'translateY(10px)'},{opacity:1,transform:'none'}],{duration:360,easing:'cubic-bezier(.22,1,.36,1)'});
+      }
+    });
     document.getElementById('filter-status').textContent = `Showing ${count} project${count === 1 ? '' : 's'}.`;
     updateScroll();
   }));
@@ -60,6 +67,31 @@ if (filterBar) {
 document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('click',() => a.closest('details').removeAttribute('open')));
 const menu = document.querySelector('.mobile-nav');
 menu?.addEventListener('keydown',event => { if (event.key === 'Escape') { menu.open = false; menu.querySelector('summary').focus(); } });
+menu?.addEventListener('toggle',()=>menu.querySelector('summary').setAttribute('aria-label',menu.open?'Close navigation':'Open navigation'));
+document.addEventListener('click',event=>{if(menu?.open&&!menu.contains(event.target))menu.open=false;});
+
+// Native details remain usable without scripts; animation only changes the transition.
+document.querySelectorAll('.skill-disclosure').forEach(details=>{
+  const summary=details.querySelector('summary'),prompt=details.querySelector('.skill-prompt');
+  let animation,wantsOpen=details.open;
+  const cleanup=()=>{details.classList.remove('is-animating');details.removeAttribute('data-closing');details.style.removeProperty('height');};
+  const updatePrompt=()=>{prompt.textContent=details.open?'Hide example':'See it in practice';};
+  updatePrompt();details.addEventListener('toggle',updatePrompt);
+  summary.addEventListener('click',event=>{
+    if(!motion)return;
+    event.preventDefault();
+    const start=details.getBoundingClientRect().height;
+    wantsOpen=animation?!wantsOpen:!details.open;
+    animation?.cancel();cleanup();details.open=true;
+    const style=getComputedStyle(details);
+    const closed=summary.getBoundingClientRect().height+parseFloat(style.paddingTop)+parseFloat(style.paddingBottom)+parseFloat(style.borderTopWidth)+parseFloat(style.borderBottomWidth);
+    const end=wantsOpen?details.getBoundingClientRect().height:closed;
+    details.toggleAttribute('data-closing',!wantsOpen);details.classList.add('is-animating');
+    animation=details.animate([{height:`${start}px`},{height:`${end}px`}],{duration:320,easing:'cubic-bezier(.22,1,.36,1)'});
+    animation.onfinish=()=>{details.open=wantsOpen;animation=null;cleanup();updatePrompt();};
+  });
+  document.addEventListener('portfolio:motion',()=>{if(animation){animation.cancel();animation=null;details.open=wantsOpen;cleanup();updatePrompt();}});
+});
 
 const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
 rows.forEach(row => {
@@ -99,7 +131,7 @@ function updateScroll() {
   let current;
   sections.forEach(item => { if (item.section.getBoundingClientRect().top <= innerHeight * .35) current = item; });
   sections.forEach(item => item.link.classList.toggle('is-active',item === current));
-  if (motion) visibleRows.forEach(row => {
+  if (motion && finePointer.matches) visibleRows.forEach(row => {
     if (row.hidden) return;
     const rect = row.getBoundingClientRect();
     const value = Math.max(-1,Math.min(1,(rect.top + rect.height / 2 - innerHeight / 2) / innerHeight));
@@ -133,6 +165,7 @@ if (dialog && projectData && typeof dialog.showModal === 'function') {
     const media = document.querySelector(`.project-row[data-slug="${p.slug}"] .visual-depth`);
     byId('quick-media').replaceChildren(...[...media.children].map(child => child.cloneNode(true)));
     dialog.scrollTop = 0;
+    if(dialog.open&&motion){const layout=dialog.querySelector('.quick-layout');layout.getAnimations().forEach(a=>a.cancel());layout.animate([{opacity:.3,transform:'translateX(7px)'},{opacity:1,transform:'none'}],{duration:280,easing:'cubic-bezier(.22,1,.36,1)'});}
   }
   document.querySelectorAll('.quick-look').forEach(button => {
     button.hidden = false;
@@ -160,7 +193,11 @@ if (deviceControls) {
   const yaw = deviceControls.querySelector('[data-device-yaw]');
   const focusButtons = [...deviceControls.querySelectorAll('[data-device-focus]')];
   deviceControls.hidden = false;
-  const update = () => { figure.style.setProperty('--device-spread',Number(spread.value) / 100); figure.style.setProperty('--device-yaw',`${yaw.value}deg`); };
+  const update = () => {
+    figure.style.setProperty('--device-spread',Number(spread.value) / 100);figure.style.setProperty('--device-yaw',`${yaw.value}deg`);
+    deviceControls.querySelector('[data-spread-output]').textContent=`${spread.value}%`;
+    deviceControls.querySelector('[data-yaw-output]').textContent=`${yaw.value}°`;
+  };
   spread.addEventListener('input',update); yaw.addEventListener('input',update);
   const focus = selected => {
     focusButtons.forEach(button => button.setAttribute('aria-pressed',String(button.dataset.deviceFocus === selected)));

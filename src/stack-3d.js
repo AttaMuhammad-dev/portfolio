@@ -1,5 +1,6 @@
 import {Scene,PerspectiveCamera,WebGLRenderer,Group,Mesh,MeshStandardMaterial,MeshBasicMaterial,HemisphereLight,DirectionalLight,PlaneGeometry,SphereGeometry,TorusGeometry,TubeGeometry,CatmullRomCurve3,Vector3,CanvasTexture,SRGBColorSpace,ACESFilmicToneMapping,MathUtils} from 'three';
 import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
+import {damp,sceneQuality,animateSurface} from './scene-motion.js';
 
 const stacks={
   web:[['React','INTERFACE'],['Express','SERVICES'],['MongoDB','DATA']],
@@ -9,8 +10,9 @@ const stacks={
 
 export function initStackWorld(world,{motion:initialMotion}) {
   const canvas=world.querySelector('canvas');
+  let quality=sceneQuality();
   const renderer=new WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputColorSpace=SRGBColorSpace;
+  renderer.setPixelRatio(quality.pixelRatio);renderer.outputColorSpace=SRGBColorSpace;world.dataset.quality=quality.compact?'compact':'full';
   renderer.toneMapping=ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
   const scene=new Scene(),camera=new PerspectiveCamera(34,1,.1,35),assembly=new Group();
   camera.position.set(0,.25,9);scene.add(assembly);
@@ -56,29 +58,31 @@ export function initStackWorld(world,{motion:initialMotion}) {
   const orbit=new Mesh(new TorusGeometry(3.55,.008,6,140),lineMaterial);orbit.rotation.set(1.05,.25,.13);orbit.position.set(0,-.70,-.45);assembly.add(orbit);
   const compass=new Group();
   for(let i=0;i<7;i++){const dot=new Mesh(new SphereGeometry(.018,8,6),pale);const angle=i/7*Math.PI*2;dot.position.set(Math.cos(angle)*3.7,Math.sin(angle)*1.6,-.9);compass.add(dot);}assembly.add(compass);
-  let motion=initialMotion,visible=false,frame=0,time=0,previous=0,transition=1,pointerX=0,pointerY=0,mode='web';
+  let motion=initialMotion,visible=false,frame=0,time=0,previous=0,transition=1,pointerX=0,pointerY=0,hoverX=0,hoverY=0,mode='web';
   const request=()=>{if(!frame&&visible&&!document.hidden)frame=requestAnimationFrame(draw);};
-  function resize(){const w=world.clientWidth,h=world.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.position.z=Math.max(8.9,4.1/(Math.tan(MathUtils.degToRad(camera.fov/2))*camera.aspect));camera.updateProjectionMatrix();request();}
-  function select(next){if(!stacks[next])return;mode=next;nodes.forEach(({face,index})=>{face.material.map=label(...stacks[next][index],index);face.material.needsUpdate=true;});transition=motion?0:1;world.dataset.mode=next;canvas.setAttribute('aria-label',`Illustrative 3D architecture: ${stacks[next].map(x=>x[0]).join(' connected to ')}.`);request();}
+  let sizeKey='';
+  function resize(){const w=world.clientWidth,h=world.clientHeight;if(!w||!h)return;quality=sceneQuality();const key=`${w}:${h}:${quality.pixelRatio}`;if(key===sizeKey)return;sizeKey=key;renderer.setPixelRatio(quality.pixelRatio);renderer.setSize(w,h,false);world.dataset.quality=quality.compact?'compact':'full';camera.aspect=w/h;camera.position.z=Math.max(8.9,4.1/(Math.tan(MathUtils.degToRad(camera.fov/2))*camera.aspect));camera.updateProjectionMatrix();request();}
+  function select(next){if(!stacks[next])return;const changed=mode!==next;mode=next;nodes.forEach(({face,index})=>{face.material.map=label(...stacks[next][index],index);face.material.needsUpdate=true;});transition=motion?0:1;world.dataset.mode=next;canvas.setAttribute('aria-label',`Illustrative 3D architecture: ${stacks[next].map(x=>x[0]).join(' connected to ')}.`);if(changed)animateSurface(canvas,motion);request();}
   function draw(timestamp){
     frame=0;if(!visible||document.hidden)return;
-    const delta=Math.min((timestamp-(previous||timestamp))/1000,.045);previous=timestamp;if(motion)time+=delta;
-    transition=MathUtils.lerp(transition,1,.085);
-    assembly.rotation.set(-.02+(motion?pointerY*.04:0),-.10+(motion?pointerX*.10+Math.sin(time*.13)*.035:0),-.015);
+    if(motion&&previous&&timestamp-previous<quality.interval-1){request();return;}
+    const delta=Math.min(previous?(timestamp-previous)/1000:1/60,.08);previous=timestamp;if(motion)time+=delta;
+    transition=motion?damp(transition,1,7,delta):1;hoverX=damp(hoverX,pointerX,5,delta);hoverY=damp(hoverY,pointerY,5,delta);
+    assembly.rotation.set(-.02+(motion?hoverY*.035:0),-.10+(motion?hoverX*.08+Math.sin(time*.13)*.025:0),-.015);
     nodes.forEach(({node,base,index})=>{node.position.y=base.y+(motion?Math.sin(time*.65+index*1.2)*.065:0)-(1-transition)*.24;node.rotation.x=-.14+(motion?Math.sin(time*.35+index)*.035:0);});
     flows.forEach(({dot,curve,offset})=>dot.position.copy(curve.getPoint((time*.13+offset)%1)));
-    compass.rotation.z=motion?Math.sin(time*.1)*.05:0;renderer.render(scene,camera);canvas.dataset.rendered='true';
+    compass.rotation.z=motion?Math.sin(time*.1)*.05:0;renderer.render(scene,camera);canvas.dataset.rendered='true';world.dataset.sceneState=motion?'playing':'still';
     if(motion||transition<.999)request();
   }
   const controller=new AbortController(),{signal}=controller;
   world.addEventListener('pointermove',event=>{if(!motion||event.pointerType!=='mouse')return;const rect=world.getBoundingClientRect();pointerX=(event.clientX-rect.left)/rect.width-.5;pointerY=(event.clientY-rect.top)/rect.height-.5;request();},{signal});
   world.addEventListener('pointerleave',()=>{pointerX=pointerY=0;request();},{signal});
   world.addEventListener('portfolio:system',event=>select(event.detail.mode),{signal});
-  document.addEventListener('portfolio:motion',event=>{motion=event.detail.enabled;request();},{signal});
+  document.addEventListener('portfolio:motion',event=>{motion=event.detail.enabled;previous=0;canvas.getAnimations().forEach(a=>a.cancel());request();},{signal});
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&frame){cancelAnimationFrame(frame);frame=0;}else{previous=0;request();}},{signal});
-  const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){previous=0;request();}else if(frame){cancelAnimationFrame(frame);frame=0;}},{threshold:0});observer.observe(world);
+  const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){previous=0;request();}else{if(frame)cancelAnimationFrame(frame);frame=0;world.dataset.sceneState='offscreen';}},{threshold:0});observer.observe(world);
   const resizeObserver=new ResizeObserver(resize);resizeObserver.observe(world);
-  canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();if(frame)cancelAnimationFrame(frame);controller.abort();observer.disconnect();resizeObserver.disconnect();canvas.hidden=true;world.classList.remove('is-ready');world.dataset.renderMode='poster';},{once:true});
+  canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();if(frame)cancelAnimationFrame(frame);controller.abort();observer.disconnect();resizeObserver.disconnect();renderer.dispose();canvas.hidden=true;world.classList.remove('is-ready');world.dataset.renderMode='poster';},{once:true});
   select(world.dataset.mode||mode);resize();canvas.hidden=false;world.classList.add('is-ready');world.dataset.renderMode='webgl';
   return {mode};
 }

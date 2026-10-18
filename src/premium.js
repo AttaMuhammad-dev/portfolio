@@ -7,7 +7,15 @@ const systemStories={
 export function startExperience({motion:initialMotion}) {
   let motion=initialMotion;
   document.documentElement.classList.add('experience-ready');
-  document.addEventListener('portfolio:motion',event=>{motion=event.detail.enabled;updateDepth();});
+  document.addEventListener('portfolio:motion',event=>{
+    motion=event.detail.enabled;
+    if(!motion){
+      halo.classList.remove('is-tracking');
+      document.querySelectorAll('[style*="--magnet"]').forEach(element=>{element.style.removeProperty('--magnet-x');element.style.removeProperty('--magnet-y');});
+      depthTargets.forEach(element=>{element.style.setProperty('--depth-angle','0deg');element.style.setProperty('--depth-y','0px');element.style.setProperty('--depth-scale','1');element.style.setProperty('--chapter-turn','0deg');});
+    }
+    updateDepth();
+  });
   let navigating=false;
   document.addEventListener('click',event=>{
     const link=event.target.closest('a[href]');
@@ -15,7 +23,7 @@ export function startExperience({motion:initialMotion}) {
     const destination=new URL(link.href);
     if(destination.origin!==location.origin||destination.pathname===location.pathname)return;
     event.preventDefault();navigating=true;document.body.classList.add('route-leaving');
-    setTimeout(()=>location.assign(destination.href),200);
+    setTimeout(()=>location.assign(destination.href),140);
   });
   addEventListener('pageshow',()=>{navigating=false;document.body.classList.remove('route-leaving');});
 
@@ -63,17 +71,27 @@ export function startExperience({motion:initialMotion}) {
     button.addEventListener('pointerleave',()=>{button.style.setProperty('--magnet-x','0px');button.style.setProperty('--magnet-y','0px');});
   });
 
+  const ambient=[...document.querySelectorAll('.build-lab,.craft-strip,.chapter-sculpture,.contact-section')];
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('motion-in-view',entry.isIntersecting)),{rootMargin:'40px'});
+    ambient.forEach(element=>observer.observe(element));
+  }else ambient.forEach(element=>element.classList.add('motion-in-view'));
+  const updateVisibility=()=>document.documentElement.classList.toggle('page-hidden',document.hidden);
+  document.addEventListener('visibilitychange',updateVisibility);updateVisibility();
+
   const depthTargets=[...document.querySelectorAll('.project-stage,.case-image,.chapter-sculpture,.about-stamp')],inView=new Set();
   if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting?inView.add(e.target):inView.delete(e.target)),{rootMargin:'120px'});depthTargets.forEach(e=>observer.observe(e));}else depthTargets.forEach(e=>inView.add(e));
   let scrollFrame;
   function updateDepth(){
     scrollFrame=undefined;
-    inView.forEach(element=>{
-      const box=element.getBoundingClientRect(),progress=Math.max(-1,Math.min(1,(box.top+box.height/2-innerHeight/2)/innerHeight));
-      element.style.setProperty('--depth-angle',`${motion?progress*7:0}deg`);
-      element.style.setProperty('--depth-y',`${motion?progress*22:0}px`);
-      element.style.setProperty('--depth-scale',String(motion?1-Math.abs(progress)*.035:1));
-      element.style.setProperty('--chapter-turn',`${motion?progress*22:0}deg`);
+    const compact=matchMedia('(max-width:780px), (pointer:coarse)').matches;
+    const measurements=[...inView].map(element=>({element,box:element.getBoundingClientRect()}));
+    measurements.forEach(({element,box})=>{
+      const progress=Math.max(-1,Math.min(1,(box.top+box.height/2-innerHeight/2)/innerHeight));
+      element.style.setProperty('--depth-angle',`${motion?progress*(compact?1.5:4):0}deg`);
+      element.style.setProperty('--depth-y',`${motion?progress*(compact?4:12):0}px`);
+      element.style.setProperty('--depth-scale',String(motion?1-Math.abs(progress)*(compact?.006:.018):1));
+      element.style.setProperty('--chapter-turn',`${motion?progress*(compact?8:16):0}deg`);
     });
   }
   addEventListener('scroll',()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(updateDepth);},{passive:true});
@@ -96,7 +114,8 @@ export function startExperience({motion:initialMotion}) {
       const layers=document.getElementById('system-layers');layers.replaceChildren(...story.layers.map(([name,description],i)=>{const li=document.createElement('li'),number=document.createElement('span'),text=document.createElement('div'),strong=document.createElement('strong'),small=document.createElement('small');number.textContent=`0${i+1}`;strong.textContent=name;small.textContent=description;text.append(strong,small);li.append(number,text);return li;}));
       const link=document.getElementById('system-case');link.href=`/projects/${story.slug}/`;link.replaceChildren(document.createTextNode(`Explore ${story.name} `));const arrow=document.createElement('span');arrow.setAttribute('aria-hidden','true');arrow.textContent='↗';link.append(arrow);
       world.dataset.mode=mode;world.dispatchEvent(new CustomEvent('portfolio:system',{detail:{mode}}));
-      if(motion)document.querySelector('.system-story').animate([{opacity:.25,transform:'translateY(10px)'},{opacity:1,transform:'none'}],{duration:480,easing:'cubic-bezier(.22,1,.36,1)'});
+      const storyElement=document.querySelector('.system-story');storyElement.getAnimations().forEach(a=>a.cancel());
+      if(motion)storyElement.animate([{opacity:.35,transform:'translateY(7px)'},{opacity:1,transform:'none'}],{duration:360,easing:'cubic-bezier(.22,1,.36,1)'});
     }));
     let started=false;
     const start=()=>{if(started)return;started=true;import('/hero-3d.js').then(({initStackWorld})=>initStackWorld(world,{motion})).catch(()=>world.classList.add('has-static-preview'));};
