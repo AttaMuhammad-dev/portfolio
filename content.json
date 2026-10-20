@@ -2,7 +2,7 @@
   "name": "Atta Muhammad",
   "role": "Full-Stack Developer | Web & Cross-Platform Mobile Applications",
   "location": "Karachi, Pakistan",
-  "updated": "2026-10-18",
+  "updated": "2026-10-20",
   "profileUpdatedAt": "2026-10-17T15:14:47Z",
   "origin": "https://atta-muhammad-portfolio.vercel.app",
   "linkedin": "https://www.linkedin.com/in/atta-muhammad-729b0b315/",
@@ -116,7 +116,7 @@
         "Source-linked response / saved guide fallback"
       ],
       "contribution": "Developed with an AI-assisted workflow, with hands-on work in testing, builds, debugging and deployment. The source includes knowledge maintenance and operational documentation.",
-      "verification": "The public application is reachable. Production build and type checks passed. Three timeouts in the initial test run passed on a focused rerun; that rerun was not a repeat of the entire suite. Live model generation has not been re-evaluated in this launch review.",
+      "verification": "Checked on 20 October 2026: 395 automated tests, production build and type checks passed. Live sourced answers and Roman Urdu guidance were tested. Desktop and mobile checks confirmed new answers stay at their beginning and readers can scroll freely.",
       "limitations": [
         "An independent student project; it is not presented as an official college service.",
         "Confirm fees, dates, eligibility and other time-sensitive information with the college.",
@@ -137,7 +137,7 @@
         "Run the documented checks and production build before deploying to Vercel."
       ],
       "status": "Live demo",
-      "statusDetail": "Public interface and build checked · model availability depends on provider"
+      "statusDetail": "Live AI and reading behaviour checked · dated guide fallback available"
     },
     {
       "slug": "shape-up",
@@ -167,7 +167,7 @@
         "Daily logs for water, steps, calories and weight",
         "Workout database and fitness calculators",
         "Nutrition-related tools and progress views",
-        "An AI coaching integration with a clear unavailable-service state"
+        "AI coaching with conversation context, bounded retries and clear provider-error states"
       ],
       "architecture": [
         "React + Redux Toolkit frontend",
@@ -176,11 +176,12 @@
         "Dedicated MongoDB Atlas demo database"
       ],
       "contribution": "Built as a full-stack learning project. Launch work includes a serverless entrypoint, reusable database connections, request limits, deployment configuration and a visible demo notice. The professional repository retains the original history and attribution.",
-      "verification": "Live synthetic registration, authenticated profile access, saving and reading a personal log, logout and login passed on 17 October 2026. An anonymous profile request was rejected. The frontend build and three deployment checks also passed.",
+      "verification": "Checked on 20 October 2026: 17 backend tests, 8 frontend tests and the production build passed. Twenty-one live synthetic workflow checks covered accounts, profile saving, logs, workouts, reminders and meal plans. Live AI coaching and follow-up responses passed, with desktop and mobile chat layouts checked.",
       "limitations": [
-        "AI service/API unavailable in this demo. Provider integration updates are planned separately.",
+        "AI coaching is enabled. Free provider quotas and outages can still interrupt generation; the interface reports service errors clearly.",
         "Email delivery is disabled. Use invented sample details when exploring.",
-        "Fitness and nutrition outputs are project demonstrations, not individual medical guidance."
+        "Fitness and nutrition outputs are project demonstrations, not individual medical guidance.",
+        "Account deletion is unavailable in this demo."
       ],
       "try": [
         "Browse workouts or try a calculator without signing in.",
@@ -188,17 +189,17 @@
         "Save a daily water or steps log and check that it appears again."
       ],
       "next": [
-        "Restore and re-test the external AI integration.",
-        "Review remaining workflows and refine the interface."
+        "Review remaining workflows and keep dependencies maintained.",
+        "Evaluate email delivery separately before enabling it."
       ],
       "setup": [
         "Install backend and frontend dependencies using the repository instructions.",
         "Configure MONGO_URI and a strong JWT_SECRET privately; use a dedicated demo database.",
-        "Keep AI_ENABLED and EMAIL_ENABLED off unless their external services are configured and tested.",
+        "Configure GEMINI_API_KEY privately on the server and set AI_ENABLED=true after testing. Keep EMAIL_ENABLED=false until email delivery is configured and tested.",
         "Build the frontend and deploy the repository’s Vercel configuration."
       ],
       "status": "Live demo",
-      "statusDetail": "Account and personal log flows checked · AI API unavailable"
+      "statusDetail": "Live AI, account and personal-log workflows checked · email disabled"
     },
     {
       "slug": "technova",

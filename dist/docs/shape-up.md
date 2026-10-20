@@ -18,7 +18,7 @@ Fitness information and daily progress are easy to scatter across different tool
 - Daily logs for water, steps, calories and weight
 - Workout database and fitness calculators
 - Nutrition-related tools and progress views
-- An AI coaching integration with a clear unavailable-service state
+- AI coaching with conversation context, bounded retries and clear provider-error states
 
 ## Architecture
 
@@ -41,22 +41,23 @@ Built as a full-stack learning project. Launch work includes a serverless entryp
 
 1. Install backend and frontend dependencies using the repository instructions.
 2. Configure MONGO_URI and a strong JWT_SECRET privately; use a dedicated demo database.
-3. Keep AI_ENABLED and EMAIL_ENABLED off unless their external services are configured and tested.
+3. Configure GEMINI_API_KEY privately on the server and set AI_ENABLED=true after testing. Keep EMAIL_ENABLED=false until email delivery is configured and tested.
 4. Build the frontend and deploy the repository’s Vercel configuration.
 
 Use the repository README for commands. Source links point to the prepared project repository. Never commit environment credentials.
 
 ## Verification
 
-Live synthetic registration, authenticated profile access, saving and reading a personal log, logout and login passed on 17 October 2026. An anonymous profile request was rejected. The frontend build and three deployment checks also passed.
+Checked on 20 October 2026: 17 backend tests, 8 frontend tests and the production build passed. Twenty-one live synthetic workflow checks covered accounts, profile saving, logs, workouts, reminders and meal plans. Live AI coaching and follow-up responses passed, with desktop and mobile chat layouts checked.
 
 ## Current limitations
 
-- AI service/API unavailable in this demo. Provider integration updates are planned separately.
+- AI coaching is enabled. Free provider quotas and outages can still interrupt generation; the interface reports service errors clearly.
 - Email delivery is disabled. Use invented sample details when exploring.
 - Fitness and nutrition outputs are project demonstrations, not individual medical guidance.
+- Account deletion is unavailable in this demo.
 
 ## Next improvements
 
-- Restore and re-test the external AI integration.
-- Review remaining workflows and refine the interface.
+- Review remaining workflows and keep dependencies maintained.
+- Evaluate email delivery separately before enabling it.

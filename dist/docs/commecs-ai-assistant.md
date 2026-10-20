@@ -47,7 +47,7 @@ Use the repository README for commands. Source links point to the prepared proje
 
 ## Verification
 
-The public application is reachable. Production build and type checks passed. Three timeouts in the initial test run passed on a focused rerun; that rerun was not a repeat of the entire suite. Live model generation has not been re-evaluated in this launch review.
+Checked on 20 October 2026: 395 automated tests, production build and type checks passed. Live sourced answers and Roman Urdu guidance were tested. Desktop and mobile checks confirmed new answers stay at their beginning and readers can scroll freely.
 
 ## Current limitations
 
