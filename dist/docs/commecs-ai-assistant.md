@@ -47,7 +47,7 @@ Use the repository README for commands. Source links point to the prepared proje
 
 ## Verification
 
-Checked on 20 October 2026: 395 automated tests, production build and type checks passed. Live sourced answers and Roman Urdu guidance were tested. Desktop and mobile checks confirmed new answers stay at their beginning and readers can scroll freely.
+Checked on 20–21 October 2026: 400 automated tests, production build and type checks passed. Live answers, dated fallback and Roman Urdu guidance were tested. The official faculty snapshot was reviewed against the accessible source. Reading-position regression checks confirm new answers stay at their beginning.
 
 ## Current limitations
 

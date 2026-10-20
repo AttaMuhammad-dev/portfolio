@@ -2,7 +2,7 @@
   "name": "Atta Muhammad",
   "role": "Full-Stack Developer | Web & Cross-Platform Mobile Applications",
   "location": "Karachi, Pakistan",
-  "updated": "2026-10-20",
+  "updated": "2026-10-21",
   "profileUpdatedAt": "2026-10-17T15:14:47Z",
   "origin": "https://atta-muhammad-portfolio.vercel.app",
   "linkedin": "https://www.linkedin.com/in/atta-muhammad-729b0b315/",
@@ -116,7 +116,7 @@
         "Source-linked response / saved guide fallback"
       ],
       "contribution": "Developed with an AI-assisted workflow, with hands-on work in testing, builds, debugging and deployment. The source includes knowledge maintenance and operational documentation.",
-      "verification": "Checked on 20 October 2026: 395 automated tests, production build and type checks passed. Live sourced answers and Roman Urdu guidance were tested. Desktop and mobile checks confirmed new answers stay at their beginning and readers can scroll freely.",
+      "verification": "Checked on 20–21 October 2026: 400 automated tests, production build and type checks passed. Live answers, dated fallback and Roman Urdu guidance were tested. The official faculty snapshot was reviewed against the accessible source. Reading-position regression checks confirm new answers stay at their beginning.",
       "limitations": [
         "An independent student project; it is not presented as an official college service.",
         "Confirm fees, dates, eligibility and other time-sensitive information with the college.",
@@ -167,7 +167,9 @@
         "Daily logs for water, steps, calories and weight",
         "Workout database and fitness calculators",
         "Nutrition-related tools and progress views",
-        "AI coaching with conversation context, bounded retries and clear provider-error states"
+        "AI coaching with conversation context, bounded retries and clear provider-error states",
+        "Full account data export and password-confirmed permanent account deletion",
+        "Authenticated support email, shared theme and device reminder preferences"
       ],
       "architecture": [
         "React + Redux Toolkit frontend",
@@ -176,12 +178,12 @@
         "Dedicated MongoDB Atlas demo database"
       ],
       "contribution": "Built as a full-stack learning project. Launch work includes a serverless entrypoint, reusable database connections, request limits, deployment configuration and a visible demo notice. The professional repository retains the original history and attribution.",
-      "verification": "Checked on 20 October 2026: 17 backend tests, 8 frontend tests and the production build passed. Twenty-one live synthetic workflow checks covered accounts, profile saving, logs, workouts, reminders and meal plans. Live AI coaching and follow-up responses passed, with desktop and mobile chat layouts checked.",
+      "verification": "Checked on 20–21 October 2026: 27 backend tests, 14 frontend tests and the production build passed. All 57 defined live synthetic workflow checks passed, including account isolation, session invalidation, concurrent food additions, exports, email acceptance and account deletion. The owner confirmed the support email reached the inbox. Real AI coaching and follow-up responses succeeded in the final check; desktop and mobile layouts were reviewed.",
       "limitations": [
         "AI coaching is enabled. Free provider quotas and outages can still interrupt generation; the interface reports service errors clearly.",
-        "Email delivery is disabled. Use invented sample details when exploring.",
+        "Support email is enabled for signed-in users and rate limited. Use invented sample details when exploring.",
         "Fitness and nutrition outputs are project demonstrations, not individual medical guidance.",
-        "Account deletion is unavailable in this demo."
+        "Browser reminders require the app to remain open. Motion step counting is an estimate on supported phones; manual entry is available."
       ],
       "try": [
         "Browse workouts or try a calculator without signing in.",
@@ -189,17 +191,17 @@
         "Save a daily water or steps log and check that it appears again."
       ],
       "next": [
-        "Review remaining workflows and keep dependencies maintained.",
-        "Evaluate email delivery separately before enabling it."
+        "Keep provider quotas, dependencies and data backups maintained.",
+        "Review genuine user feedback and extend features without overstating demo capabilities."
       ],
       "setup": [
         "Install backend and frontend dependencies using the repository instructions.",
         "Configure MONGO_URI and a strong JWT_SECRET privately; use a dedicated demo database.",
-        "Configure GEMINI_API_KEY privately on the server and set AI_ENABLED=true after testing. Keep EMAIL_ENABLED=false until email delivery is configured and tested.",
+        "Configure GEMINI_API_KEY privately and set AI_ENABLED=true after testing. Optional support email uses private EMAIL_USER and EMAIL_PASS settings; enable EMAIL_ENABLED only after delivery verification.",
         "Build the frontend and deploy the repository’s Vercel configuration."
       ],
       "status": "Live demo",
-      "statusDetail": "Live AI, account and personal-log workflows checked · email disabled"
+      "statusDetail": "Account, fitness and AI flows checked · support email delivery confirmed"
     },
     {
       "slug": "technova",

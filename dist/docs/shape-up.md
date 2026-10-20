@@ -19,6 +19,8 @@ Fitness information and daily progress are easy to scatter across different tool
 - Workout database and fitness calculators
 - Nutrition-related tools and progress views
 - AI coaching with conversation context, bounded retries and clear provider-error states
+- Full account data export and password-confirmed permanent account deletion
+- Authenticated support email, shared theme and device reminder preferences
 
 ## Architecture
 
@@ -41,23 +43,23 @@ Built as a full-stack learning project. Launch work includes a serverless entryp
 
 1. Install backend and frontend dependencies using the repository instructions.
 2. Configure MONGO_URI and a strong JWT_SECRET privately; use a dedicated demo database.
-3. Configure GEMINI_API_KEY privately on the server and set AI_ENABLED=true after testing. Keep EMAIL_ENABLED=false until email delivery is configured and tested.
+3. Configure GEMINI_API_KEY privately and set AI_ENABLED=true after testing. Optional support email uses private EMAIL_USER and EMAIL_PASS settings; enable EMAIL_ENABLED only after delivery verification.
 4. Build the frontend and deploy the repository’s Vercel configuration.
 
 Use the repository README for commands. Source links point to the prepared project repository. Never commit environment credentials.
 
 ## Verification
 
-Checked on 20 October 2026: 17 backend tests, 8 frontend tests and the production build passed. Twenty-one live synthetic workflow checks covered accounts, profile saving, logs, workouts, reminders and meal plans. Live AI coaching and follow-up responses passed, with desktop and mobile chat layouts checked.
+Checked on 20–21 October 2026: 27 backend tests, 14 frontend tests and the production build passed. All 57 defined live synthetic workflow checks passed, including account isolation, session invalidation, concurrent food additions, exports, email acceptance and account deletion. The owner confirmed the support email reached the inbox. Real AI coaching and follow-up responses succeeded in the final check; desktop and mobile layouts were reviewed.
 
 ## Current limitations
 
 - AI coaching is enabled. Free provider quotas and outages can still interrupt generation; the interface reports service errors clearly.
-- Email delivery is disabled. Use invented sample details when exploring.
+- Support email is enabled for signed-in users and rate limited. Use invented sample details when exploring.
 - Fitness and nutrition outputs are project demonstrations, not individual medical guidance.
-- Account deletion is unavailable in this demo.
+- Browser reminders require the app to remain open. Motion step counting is an estimate on supported phones; manual entry is available.
 
 ## Next improvements
 
-- Review remaining workflows and keep dependencies maintained.
-- Evaluate email delivery separately before enabling it.
+- Keep provider quotas, dependencies and data backups maintained.
+- Review genuine user feedback and extend features without overstating demo capabilities.
