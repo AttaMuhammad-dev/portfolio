@@ -20,6 +20,9 @@ An e-commerce application connects many small interactions: discovering products
 - Firebase authentication and customer record workflows
 - Admin inventory screens and demonstration order flow
 - Persistent administrator-managed categories shared across catalog and search
+- Authenticated AI shopping assistance through a private server
+- Signed image uploads for customer avatars and administrator catalog media
+- Private review submissions with administrator-approved public feedback
 
 ## Architecture
 
@@ -27,10 +30,11 @@ An e-commerce application connects many small interactions: discovering products
 2. Provider state management
 3. Firebase Authentication
 4. Firestore catalog and customer records
+5. Node service routes · Firebase ID-token verification · private Gemini / Cloudinary credentials
 
 ## My work and learning
 
-Launch work restored web configuration, added explicit demo behavior, removed automatic public catalog seeding, tested Firestore access rules and fixed a cart quantity issue. The Flutter interface also exposes browser accessibility semantics.
+Launch work restored web configuration, added explicit demo behavior, removed automatic public catalog seeding, tested Firestore access rules and fixed a cart quantity issue. The Flutter interface also exposes browser accessibility semantics. The October 24 integration update moved AI and media uploads behind verified customer sessions, added administrator moderation for public reviews and published Android 3.0.2.
 
 ## Try the demo
 
@@ -40,10 +44,10 @@ Launch work restored web configuration, added explicit demo behavior, removed au
 
 ## Install the demo
 
-- Android APK: https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App/releases/download/v3.0.1-demo.20261024/technova-android-demo-3.0.1.apk
-- Version 3.0.1; 59.7 MB; Android 7.0 or newer.
+- Android APK: https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App/releases/download/v3.0.2-demo.20261024/technova-android-demo-3.0.2.apk
+- Version 3.0.2; 60.1 MB; Android 7.0 or newer.
 - Direct demo distribution with a development certificate. The portfolio owner confirmed physical Android installation and account login on 18 October 2026.
-- SHA-256: eac358e17894633c6ecbdfdcc534537c5d2793bef527e148a5c9cd971cae5806
+- SHA-256: 815741bbc638b72e7cc22433a8c555e2ccf17646898a983164c9bf03f6864fe3
 
 On iPhone or iPad, open the browser demo in Safari, use Share then Add to Home Screen, leave Open as Web App on if offered, and tap Add. This is the browser application; native iOS testing has not been performed. Internet is needed for catalog and account features.
 
@@ -51,24 +55,24 @@ Apple instructions: https://support.apple.com/guide/iphone/open-as-web-app-iphea
 
 ## Setup overview
 
-1. Use a compatible Flutter SDK and install the package dependencies.
-2. Configure a Firebase web application and publish tested Firestore rules for your own project.
-3. Keep private provider credentials out of browser code; optional integrations are disabled in this demo.
-4. Run the cart check, build a Flutter web release and deploy the static build/web directory.
+1. Install the pinned Flutter and Node dependencies; configure your own Firebase project and tested access rules.
+2. Save Gemini and Cloudinary credentials privately on the server host. Never put provider secrets in Dart, APK or browser files.
+3. Build Flutter web assets, then deploy with the root Vercel configuration so API routes and the browser app run together.
+4. Use the existing administrator role to maintain catalog data and approve safe review text.
 
 Use the repository README for commands. Source links point to the prepared project repository. Never commit environment credentials.
 
 ## Verification
 
-24 October 2026: four Flutter cart/category tests, nineteen Firestore emulator access checks and eleven live Firebase service checks passed. Live service checks covered customer registration/sign-in, profiles, a marked zero-value demo order and cross-customer/role-escalation denial. Flutter analysis reported no issues; release web and Android 3.0.1 builds succeeded. APK metadata and signature were verified. The owner confirmed installation/login of the earlier 3.0.0 APK on a physical Android phone on 18 October; testing of the updated package is a separate step. Native iOS remains untested.
+24 October 2026: four Flutter tests, 12 Node service tests and 35 Firestore emulator access/privacy checks passed. Twelve new live checks verified a signed-in Gemini reply, a signed Cloudinary sample upload and retrieval, authentication, catalog-upload restrictions and private review protection. Flutter analysis is clean; web and Android 3.0.2 builds, APK metadata, signature and upload checksum were verified. The owner handles fresh physical Android and iOS/browser testing; native iOS is not supplied.
 
 ## Current limitations
 
 - Demo checkout only: no real payment processing or fulfillment.
-- AI API, external image uploads and public reviews are not enabled.
-- Android installation and account login were confirmed by the portfolio owner on a physical phone (18 October 2026). The iPhone option uses the browser demo added to the Home Screen; native iOS testing is still pending.
+- AI and image services depend on free provider quotas/availability. Burst limits are per warm server process. Public reviews appear only after administrator approval.
+- Android 3.0.2 physical testing is handled by the owner. Earlier installation/login was confirmed on 18 October. iPhone/iPad use the browser demo via Add to Home Screen; no native iOS package is supplied.
 
 ## Next improvements
 
-- Keep the pinned Flutter/Android toolchain maintained and test future releases on real devices.
-- Optional external integrations and native iOS distribution remain separate future work.
+- Maintain provider quotas, moderation and the pinned Flutter/Android dependencies.
+- The owner handles physical Android and iOS/browser checks; native iOS distribution remains separate.

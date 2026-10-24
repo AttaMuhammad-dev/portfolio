@@ -234,20 +234,24 @@
         "Cart with quantity management",
         "Firebase authentication and customer record workflows",
         "Admin inventory screens and demonstration order flow",
-        "Persistent administrator-managed categories shared across catalog and search"
+        "Persistent administrator-managed categories shared across catalog and search",
+        "Authenticated AI shopping assistance through a private server",
+        "Signed image uploads for customer avatars and administrator catalog media",
+        "Private review submissions with administrator-approved public feedback"
       ],
       "architecture": [
         "Flutter application · browser-accessible demo",
         "Provider state management",
         "Firebase Authentication",
-        "Firestore catalog and customer records"
+        "Firestore catalog and customer records",
+        "Node service routes · Firebase ID-token verification · private Gemini / Cloudinary credentials"
       ],
-      "contribution": "Launch work restored web configuration, added explicit demo behavior, removed automatic public catalog seeding, tested Firestore access rules and fixed a cart quantity issue. The Flutter interface also exposes browser accessibility semantics.",
-      "verification": "24 October 2026: four Flutter cart/category tests, nineteen Firestore emulator access checks and eleven live Firebase service checks passed. Live service checks covered customer registration/sign-in, profiles, a marked zero-value demo order and cross-customer/role-escalation denial. Flutter analysis reported no issues; release web and Android 3.0.1 builds succeeded. APK metadata and signature were verified. The owner confirmed installation/login of the earlier 3.0.0 APK on a physical Android phone on 18 October; testing of the updated package is a separate step. Native iOS remains untested.",
+      "contribution": "Launch work restored web configuration, added explicit demo behavior, removed automatic public catalog seeding, tested Firestore access rules and fixed a cart quantity issue. The Flutter interface also exposes browser accessibility semantics. The October 24 integration update moved AI and media uploads behind verified customer sessions, added administrator moderation for public reviews and published Android 3.0.2.",
+      "verification": "24 October 2026: four Flutter tests, 12 Node service tests and 35 Firestore emulator access/privacy checks passed. Twelve new live checks verified a signed-in Gemini reply, a signed Cloudinary sample upload and retrieval, authentication, catalog-upload restrictions and private review protection. Flutter analysis is clean; web and Android 3.0.2 builds, APK metadata, signature and upload checksum were verified. The owner handles fresh physical Android and iOS/browser testing; native iOS is not supplied.",
       "limitations": [
         "Demo checkout only: no real payment processing or fulfillment.",
-        "AI API, external image uploads and public reviews are not enabled.",
-        "Android installation and account login were confirmed by the portfolio owner on a physical phone (18 October 2026). The iPhone option uses the browser demo added to the Home Screen; native iOS testing is still pending."
+        "AI and image services depend on free provider quotas/availability. Burst limits are per warm server process. Public reviews appear only after administrator approval.",
+        "Android 3.0.2 physical testing is handled by the owner. Earlier installation/login was confirmed on 18 October. iPhone/iPad use the browser demo via Add to Home Screen; no native iOS package is supplied."
       ],
       "try": [
         "Open the live catalog, select a category and search for a product.",
@@ -255,24 +259,24 @@
         "Explore demonstration checkout using sample information only; no purchase is made."
       ],
       "next": [
-        "Keep the pinned Flutter/Android toolchain maintained and test future releases on real devices.",
-        "Optional external integrations and native iOS distribution remain separate future work."
+        "Maintain provider quotas, moderation and the pinned Flutter/Android dependencies.",
+        "The owner handles physical Android and iOS/browser checks; native iOS distribution remains separate."
       ],
       "setup": [
-        "Use a compatible Flutter SDK and install the package dependencies.",
-        "Configure a Firebase web application and publish tested Firestore rules for your own project.",
-        "Keep private provider credentials out of browser code; optional integrations are disabled in this demo.",
-        "Run the cart check, build a Flutter web release and deploy the static build/web directory."
+        "Install the pinned Flutter and Node dependencies; configure your own Firebase project and tested access rules.",
+        "Save Gemini and Cloudinary credentials privately on the server host. Never put provider secrets in Dart, APK or browser files.",
+        "Build Flutter web assets, then deploy with the root Vercel configuration so API routes and the browser app run together.",
+        "Use the existing administrator role to maintain catalog data and approve safe review text."
       ],
       "status": "Live demo",
-      "statusDetail": "Updated Android demo · catalog, account and order service checks passed",
+      "statusDetail": "Android 3.0.2 · private AI and image services live-checked · moderated reviews",
       "originalSource": "https://github.com/Jokerisstupid/TechNova-Ecommerce-App",
       "androidApk": {
-        "url": "https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App/releases/download/v3.0.1-demo.20261024/technova-android-demo-3.0.1.apk",
-        "version": "3.0.1",
-        "size": "59.7 MB",
+        "url": "https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App/releases/download/v3.0.2-demo.20261024/technova-android-demo-3.0.2.apk",
+        "version": "3.0.2",
+        "size": "60.1 MB",
         "minimumAndroid": "7.0",
-        "sha256": "eac358e17894633c6ecbdfdcc534537c5d2793bef527e148a5c9cd971cae5806"
+        "sha256": "815741bbc638b72e7cc22433a8c555e2ccf17646898a983164c9bf03f6864fe3"
       },
       "androidDeviceTest": {
         "date": "2026-10-18",
@@ -314,7 +318,8 @@
         "MongoDB-backed CSV reports and assignment attachments",
         "Assigned-cohort submission and teacher grading workflows",
         "Synthetic risk, grade and demand examples",
-        "A public read-only analytics showcase and synthetic sample CSV download"
+        "A public read-only analytics showcase and synthetic sample CSV download",
+        "Owner-configured SMTP notifications with shared sending limits and validated support inquiries"
       ],
       "architecture": [
         "Server-rendered Flask interface",
@@ -323,12 +328,12 @@
         "pandas / scikit-learn model workflows"
       ],
       "contribution": "Release work moved credentials out of source, removed default accounts and made new uploads, reports and attachments durable across serverless restarts. Ownership checks scope staff data and cohort workflows, while revoked roles and old password sessions are rejected.",
-      "verification": "24 October 2026: 24 isolated tests passed, including analyst ownership, durable uploads/reports/attachments, assigned-cohort access, grading limits, revoked roles, session invalidation, malformed input and database-independent showcase fixtures. Eight fresh live student/account checks passed; the public showcase and sample download were also checked. Elevated staff workflows used isolated synthetic fixtures; real institutional prediction accuracy and email delivery are not claimed.",
+      "verification": "24 October 2026: 38 isolated tests passed across durable data, staff ownership/cohort boundaries, sessions, input validation, public showcase and SMTP delivery guards. Eight earlier live student/account checks and the public showcase/sample download passed. The configured SMTP service accepted a synthetic support message; actual inbox receipt is checked separately with the owner. Staff workflows used isolated synthetic fixtures; real institutional predictive accuracy is not established.",
       "limitations": [
         "Use synthetic data only. Model demonstrations are not evidence of real-world student prediction accuracy.",
         "The risk score includes a heuristic; it is not a calibrated dropout probability.",
         "Public registration creates student accounts. Staff analytics are restricted; no public administrator password is supplied.",
-        "Email delivery is disabled. New uploads/reports/attachments are stored in MongoDB; legacy local-file records require migration or re-upload."
+        "Email is limited to owner-configured inboxes, shared sending caps and provider availability. New uploads/reports/attachments are stored in MongoDB; legacy local-file records require migration or re-upload."
       ],
       "try": [
         "Open the public analytics showcase and download its synthetic sample CSV.",
@@ -336,17 +341,17 @@
         "Update your sample profile. Read the source for restricted staff workflows."
       ],
       "next": [
-        "Maintain synthetic demonstration data, account roles and dependency versions.",
-        "Maintain the read-only showcase alongside application changes; email delivery requires separate configuration."
+        "Maintain synthetic data, account roles, owner-approved recipient inboxes and dependency versions.",
+        "Keep the read-only showcase and operating notes aligned with application changes."
       ],
       "setup": [
         "Install the pinned Python dependencies and read the repository setup notes.",
-        "Set MONGO_URI, DB_NAME and a strong SECRET_KEY privately. Keep email disabled until configured.",
+        "Set MONGO_URI, DB_NAME and a strong SECRET_KEY privately. Optional SMTP uses EMAIL_USER, EMAIL_PASSWORD and owner-configured recipient inboxes; enable only after configuration.",
         "Use synthetic datasets and deliberately provision any staff roles; public registration is student-only.",
         "Deploy the Flask entrypoint with the provided Vercel configuration. New records use bounded MongoDB-backed storage; migrate any legacy local-file records."
       ],
       "status": "Live demo",
-      "statusDetail": "Durable data workflows · staff isolation tested with synthetic fixtures",
+      "statusDetail": "Durable data workflows · 38 isolated checks · owner-configured email",
       "originalSource": "https://github.com/Jokerisstupid/EduPredict",
       "releaseDocumentation": "https://github.com/AttaMuhammad-dev/EduPredict/blob/main/RELEASE-20261024.md"
     }
