@@ -14,11 +14,11 @@ Educational records can be difficult to turn into clear summaries. This learning
 
 ## Features
 
-- Student registration and role-based dashboards
-- Educational data and reporting workflows in the source
-- Synthetic models for risk, grade and demand examples
-- Staff-only analytics and prediction endpoints
-- Personal profile management for registered users
+- Student registration and current-role access checks
+- Owner-scoped CSV uploads, charts and demonstration model training
+- MongoDB-backed CSV reports and assignment attachments
+- Assigned-cohort submission and teacher grading workflows
+- Synthetic risk, grade and demand examples
 
 ## Architecture
 
@@ -29,7 +29,7 @@ Educational records can be difficult to turn into clear summaries. This learning
 
 ## My work and learning
 
-Launch work moved secrets to environment variables, removed automatic default accounts, restricted staff functions and rebuilt saved models with the current pinned library version. Runtime files are kept outside public static storage.
+Release work moved credentials out of source, removed default accounts and made new uploads, reports and attachments durable across serverless restarts. Ownership checks scope staff data and cohort workflows, while revoked roles and old password sessions are rejected.
 
 ## Try the demo
 
@@ -42,22 +42,22 @@ Launch work moved secrets to environment variables, removed automatic default ac
 1. Install the pinned Python dependencies and read the repository setup notes.
 2. Set MONGO_URI, DB_NAME and a strong SECRET_KEY privately. Keep email disabled until configured.
 3. Use synthetic datasets and deliberately provision any staff roles; public registration is student-only.
-4. Deploy the Flask entrypoint with the provided Vercel configuration. Use durable storage before relying on uploaded files.
+4. Deploy the Flask entrypoint with the provided Vercel configuration. New records use bounded MongoDB-backed storage; migrate any legacy local-file records.
 
 Use the repository README for commands. Source links point to the prepared project repository. Never commit environment credentials.
 
 ## Verification
 
-Live synthetic registration, student login, dashboard loading, profile saving and reading, and logout passed on 17 October 2026. A student request to the staff prediction endpoint was blocked. Five isolated deployment checks passed locally.
+24 October 2026: 22 isolated tests passed, including analyst ownership, durable uploads/reports/attachments, assigned-cohort access, grading limits, revoked roles, session invalidation and malformed input. Eight fresh live student/account checks passed. Elevated staff workflows used isolated synthetic fixtures; real institutional prediction accuracy and email delivery are not claimed.
 
 ## Current limitations
 
 - Use synthetic data only. Model demonstrations are not evidence of real-world student prediction accuracy.
 - The risk score includes a heuristic; it is not a calibrated dropout probability.
 - Public registration creates student accounts. Staff analytics are restricted; no public administrator password is supplied.
-- Email delivery is disabled. Uploaded files and generated reports on the free runtime are temporary.
+- Email delivery is disabled. New uploads/reports/attachments are stored in MongoDB; legacy local-file records require migration or re-upload.
 
 ## Next improvements
 
-- Prepare a safe, read-only showcase for staff analytics.
-- Review remaining reporting, assignment and upload workflows.
+- Maintain synthetic demonstration data, account roles and dependency versions.
+- A safe read-only staff showcase and separately configured email delivery remain future additions.

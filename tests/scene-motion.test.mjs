@@ -18,7 +18,18 @@ test('hero keeps phone device density while bounding large render buffers',()=>{
   assert.equal(phone.pixelRatio,3);
   const large=sceneQuality({sharp:true,width:1600,height:900,ratio:3});
   assert.ok(1600*900*large.pixelRatio**2<=1_500_001);
-  assert.equal(phone.interval,1000/30);
+  assert.equal(phone.interval,1000/60);
+  delete globalThis.matchMedia;
+});
+
+test('constrained phones conserve frames and texture density without hiding previews',()=>{
+  globalThis.matchMedia=()=>({matches:true});
+  const limited=sceneQuality({sharp:true,width:390,height:330,ratio:3,memory:2});
+  assert.equal(limited.interval,1000/30);
+  assert.equal(limited.pixelRatio,2);
+  const saving=sceneQuality({sharp:true,width:390,height:330,ratio:3,saveData:true});
+  assert.equal(saving.interval,1000/30);
+  assert.ok(saving.pixelRatio>=1);
   delete globalThis.matchMedia;
 });
 

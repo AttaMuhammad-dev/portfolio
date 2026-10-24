@@ -50,7 +50,14 @@ button, a, summary { -webkit-tap-highlight-color: #a7bd8233; }
 
 /* Shorter entrances avoid blank sections while a visitor scrolls quickly. */
 main { animation-name: refined-page-arrive; animation-duration: 480ms; }
-@keyframes refined-page-arrive { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes refined-page-arrive { from { opacity: .92; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.motion-enabled .hero-intro .heading-word { opacity: 1; transform: none; }
+.motion-enabled .hero-kicker, .motion-enabled .availability, .motion-enabled .hero-statement,
+.motion-enabled .hero-description, .motion-enabled .hero-cta, .motion-enabled .hero-footnote {
+  animation-name: refined-intro-arrive;
+  animation-duration: 560ms;
+}
+@keyframes refined-intro-arrive { from { opacity: .75; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 body.route-leaving main { transition-duration: 140ms; }
 .motion-enabled .reveal-candidate:not(.is-revealed) { translate: 0 16px; }
 .motion-enabled .reveal-candidate {

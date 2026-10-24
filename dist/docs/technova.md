@@ -19,6 +19,7 @@ An e-commerce application connects many small interactions: discovering products
 - Cart with quantity management
 - Firebase authentication and customer record workflows
 - Admin inventory screens and demonstration order flow
+- Persistent administrator-managed categories shared across catalog and search
 
 ## Architecture
 
@@ -39,10 +40,10 @@ Launch work restored web configuration, added explicit demo behavior, removed au
 
 ## Install the demo
 
-- Android APK: https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App/releases/download/v3.0.0-demo.20261017/technova-android-demo-3.0.0.apk
-- Version 3.0.0; 59.7 MB; Android 7.0 or newer.
+- Android APK: https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App/releases/download/v3.0.1-demo.20261024/technova-android-demo-3.0.1.apk
+- Version 3.0.1; 59.7 MB; Android 7.0 or newer.
 - Direct demo distribution with a development certificate. The portfolio owner confirmed physical Android installation and account login on 18 October 2026.
-- SHA-256: 9ef1e876eb0b0e15cb99387769719d390ed04936164336177262fb95bd06fbb5
+- SHA-256: eac358e17894633c6ecbdfdcc534537c5d2793bef527e148a5c9cd971cae5806
 
 On iPhone or iPad, open the browser demo in Safari, use Share then Add to Home Screen, leave Open as Web App on if offered, and tap Add. This is the browser application; native iOS testing has not been performed. Internet is needed for catalog and account features.
 
@@ -59,7 +60,7 @@ Use the repository README for commands. Source links point to the prepared proje
 
 ## Verification
 
-I previously tested the Android application using an Android emulator. Native iOS testing has not been performed. In the current browser demo, the catalog, mobile layout, search, product details, add-to-cart, sign-in page and checkout form were checked. The cart quantity regression test and release web build passed. An Android release APK was also built and its package metadata and signature verified; the portfolio owner reported successful installation and account login on a physical Android phone on 18 October 2026. Additionally, Firestore rules passed 19 emulator access checks. New-customer signup and completed live order submission remain to be checked.
+24 October 2026: four Flutter cart/category tests, nineteen Firestore emulator access checks and eleven live Firebase service checks passed. Live service checks covered customer registration/sign-in, profiles, a marked zero-value demo order and cross-customer/role-escalation denial. Flutter analysis reported no issues; release web and Android 3.0.1 builds succeeded. APK metadata and signature were verified. The owner confirmed installation/login of the earlier 3.0.0 APK on a physical Android phone on 18 October; testing of the updated package is a separate step. Native iOS remains untested.
 
 ## Current limitations
 
@@ -69,5 +70,5 @@ I previously tested the Android application using an Android emulator. Native iO
 
 ## Next improvements
 
-- Complete remaining new-customer signup and sample-order checks.
-- Restore optional external integrations; broader Android workflows and native iOS testing remain future steps.
+- Keep the pinned Flutter/Android toolchain maintained and test future releases on real devices.
+- Optional external integrations and native iOS distribution remain separate future work.

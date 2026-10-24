@@ -10,7 +10,8 @@ const stacks={
 
 export function initStackWorld(world,{motion:initialMotion}) {
   const canvas=world.querySelector('canvas');
-  let quality=sceneQuality();
+  const stackQuality=()=>sceneQuality({sharp:true,width:world.clientWidth,height:world.clientHeight});
+  let quality=stackQuality();
   const renderer=new WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});
   renderer.setPixelRatio(quality.pixelRatio);renderer.outputColorSpace=SRGBColorSpace;world.dataset.quality=quality.compact?'compact':'full';
   renderer.toneMapping=ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
@@ -35,7 +36,7 @@ export function initStackWorld(world,{motion:initialMotion}) {
     c.font='32px Georgia, serif';c.textAlign='center';c.fillText(['↗','↔','◎'][index],108,195);c.textAlign='left';
     c.fillStyle='#f0f2de';c.font=`500 ${title.length>12?'45':'52'}px Segoe UI, sans-serif`;c.fillText(title,60,320);
     c.fillStyle='#a4bd8c';c.font='19px Segoe UI, sans-serif';c.fillText(['What people experience','Where requests connect','What the app remembers'][index],60,378);
-    const texture=new CanvasTexture(sheet);texture.colorSpace=SRGBColorSpace;textures.set(id,texture);return texture;
+    const texture=new CanvasTexture(sheet);texture.colorSpace=SRGBColorSpace;texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());textures.set(id,texture);return texture;
   }
   const locations=[[-2.23,.16,.03],[0,-.23,.65],[2.23,.23,-.16]];
   locations.forEach((position,index)=>{
@@ -61,7 +62,7 @@ export function initStackWorld(world,{motion:initialMotion}) {
   let motion=initialMotion,visible=false,frame=0,time=0,previous=0,transition=1,pointerX=0,pointerY=0,hoverX=0,hoverY=0,mode='web';
   const request=()=>{if(!frame&&visible&&!document.hidden)frame=requestAnimationFrame(draw);};
   let sizeKey='';
-  function resize(){const w=world.clientWidth,h=world.clientHeight;if(!w||!h)return;quality=sceneQuality();const key=`${w}:${h}:${quality.pixelRatio}`;if(key===sizeKey)return;sizeKey=key;renderer.setPixelRatio(quality.pixelRatio);renderer.setSize(w,h,false);world.dataset.quality=quality.compact?'compact':'full';camera.aspect=w/h;camera.position.z=Math.max(8.9,4.1/(Math.tan(MathUtils.degToRad(camera.fov/2))*camera.aspect));camera.updateProjectionMatrix();request();}
+  function resize(){const w=world.clientWidth,h=world.clientHeight;if(!w||!h)return;quality=stackQuality();const key=`${w}:${h}:${quality.pixelRatio}`;if(key===sizeKey)return;sizeKey=key;renderer.setPixelRatio(quality.pixelRatio);renderer.setSize(w,h,false);world.dataset.quality=quality.compact?'compact':'full';camera.aspect=w/h;camera.position.z=Math.max(8.9,4.1/(Math.tan(MathUtils.degToRad(camera.fov/2))*camera.aspect));camera.updateProjectionMatrix();request();}
   function select(next){if(!stacks[next])return;const changed=mode!==next;mode=next;nodes.forEach(({face,index})=>{face.material.map=label(...stacks[next][index],index);face.material.needsUpdate=true;});transition=motion?0:1;world.dataset.mode=next;canvas.setAttribute('aria-label',`Illustrative 3D architecture: ${stacks[next].map(x=>x[0]).join(' connected to ')}.`);if(changed)animateSurface(canvas,motion);request();}
   function draw(timestamp){
     frame=0;if(!visible||document.hidden)return;

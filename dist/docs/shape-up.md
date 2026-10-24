@@ -50,7 +50,7 @@ Use the repository README for commands. Source links point to the prepared proje
 
 ## Verification
 
-Checked on 20–21 October 2026: 27 backend tests, 14 frontend tests and the production build passed. All 57 defined live synthetic workflow checks passed, including account isolation, session invalidation, concurrent food additions, exports, email acceptance and account deletion. The owner confirmed the support email reached the inbox. Real AI coaching and follow-up responses succeeded in the final check; desktop and mobile layouts were reviewed.
+24 October 2026: 27 backend and 14 frontend tests passed again. Seven fresh live account/log/access checks passed after redeployment, and a live AI response succeeded. The 57 defined synthetic workflow checks and owner-confirmed support inbox delivery from 20–21 October remain recorded in the release history; those 57 were not all rerun on this date.
 
 ## Current limitations
 

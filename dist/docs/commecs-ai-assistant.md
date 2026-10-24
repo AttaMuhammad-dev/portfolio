@@ -19,6 +19,7 @@ Students and parents need to find information across college pages and documents
 - A searchable college guide and dated saved-information fallbacks
 - Conversation management, optional local saving and Markdown export
 - Responsive interface, theme switching and contextual follow-ups
+- Shared model-call coordination and provider cooldowns across server instances
 
 ## Architecture
 
@@ -47,7 +48,7 @@ Use the repository README for commands. Source links point to the prepared proje
 
 ## Verification
 
-Checked on 20–21 October 2026: 400 automated tests, production build and type checks passed. Live answers, dated fallback and Roman Urdu guidance were tested. The official faculty snapshot was reviewed against the accessible source. Reading-position regression checks confirm new answers stay at their beginning.
+24 October 2026: the automated suite, type checks and production build passed. Shared MongoDB readiness was verified on the live deployment. A sampled live check caught a Roman Urdu location fallback gap; simple address questions now use the saved official contact page without spending provider quota. Earlier reading-position checks confirm new answers stay at their beginning.
 
 ## Current limitations
 
@@ -57,5 +58,5 @@ Checked on 20–21 October 2026: 400 automated tests, production build and type 
 
 ## Next improvements
 
-- Review knowledge freshness and evaluate current live answers.
-- Continue improving retrieval quality and response clarity.
+- Maintain the knowledge snapshots and confirm time-sensitive details against official sources.
+- Monitor provider quotas and real user feedback; free-provider availability remains an external dependency.

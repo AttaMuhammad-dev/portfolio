@@ -81,7 +81,7 @@ export async function initProjectWorld(world, options) {
     const group = new Group(); const w=1.24,h=2.69;
     group.add(box(w,h,.17,dark,ios?.13:.105));
     const metal=box(w+.035,h+.025,.055,edge,ios?.13:.105);metal.position.z=-.065;group.add(metal);
-    const map=await texture(url,390,844);
+    const map=await texture(url,780,1688);
     const display=plane(1.105,2.39,map);display.position.set(0,-.006,.092);group.add(display);
     const camera=ios?box(.29,.047,.013,dark,.018):ball(.019,dark);camera.position.set(0,1.18,.104);group.add(camera);
     const home=box(.29,.018,.01,cream,.008);home.position.set(0,-1.26,.094);group.add(home);
@@ -92,7 +92,7 @@ export async function initProjectWorld(world, options) {
     const android=await phone('/assets/technova-mobile.jpg');android.position.set(-1.72,-.07,.35);android.rotation.set(.03,-.13,-.075);group.add(android);makeFloat(android,.5);
     const ios=await phone('/assets/technova-mobile.jpg',true);ios.position.set(-.21,-.23,.90);ios.rotation.set(-.02,.08,.045);group.add(ios);makeFloat(ios,1.9);
     const tablet=new Group();tablet.add(box(1.96,2.80,.13,green,.10));
-    const tabletMap=await texture('/assets/technova-tablet.jpg',656,944);const tabletFace=plane(1.78,2.56,tabletMap);tabletFace.position.z=.071;tablet.add(tabletFace);
+    const tabletMap=await texture('/assets/technova-tablet.jpg',984,1416);const tabletFace=plane(1.78,2.56,tabletMap);tabletFace.position.z=.071;tablet.add(tabletFace);
     const tabletCamera=ball(.013,dark);tabletCamera.position.set(0,1.33,.076);tablet.add(tabletCamera);
     tablet.position.set(1.50,.17,-.22);tablet.rotation.set(.02,-.16,.065);group.add(tablet);makeFloat(tablet,3.4);
     return group;

@@ -2,7 +2,7 @@
   "name": "Atta Muhammad",
   "role": "Full-Stack Developer | Web & Cross-Platform Mobile Applications",
   "location": "Karachi, Pakistan",
-  "updated": "2026-10-21",
+  "updated": "2026-10-24",
   "profileUpdatedAt": "2026-10-17T15:14:47Z",
   "origin": "https://atta-muhammad-portfolio.vercel.app",
   "linkedin": "https://www.linkedin.com/in/atta-muhammad-729b0b315/",
@@ -107,7 +107,8 @@
         "Source cards linking to public college material",
         "A searchable college guide and dated saved-information fallbacks",
         "Conversation management, optional local saving and Markdown export",
-        "Responsive interface, theme switching and contextual follow-ups"
+        "Responsive interface, theme switching and contextual follow-ups",
+        "Shared model-call coordination and provider cooldowns across server instances"
       ],
       "architecture": [
         "React / TypeScript interface",
@@ -116,7 +117,7 @@
         "Source-linked response / saved guide fallback"
       ],
       "contribution": "Developed with an AI-assisted workflow, with hands-on work in testing, builds, debugging and deployment. The source includes knowledge maintenance and operational documentation.",
-      "verification": "Checked on 20–21 October 2026: 400 automated tests, production build and type checks passed. Live answers, dated fallback and Roman Urdu guidance were tested. The official faculty snapshot was reviewed against the accessible source. Reading-position regression checks confirm new answers stay at their beginning.",
+      "verification": "24 October 2026: the automated suite, type checks and production build passed. Shared MongoDB readiness was verified on the live deployment. A sampled live check caught a Roman Urdu location fallback gap; simple address questions now use the saved official contact page without spending provider quota. Earlier reading-position checks confirm new answers stay at their beginning.",
       "limitations": [
         "An independent student project; it is not presented as an official college service.",
         "Confirm fees, dates, eligibility and other time-sensitive information with the college.",
@@ -128,8 +129,8 @@
         "Open the source links and verify any time-sensitive information."
       ],
       "next": [
-        "Review knowledge freshness and evaluate current live answers.",
-        "Continue improving retrieval quality and response clarity."
+        "Maintain the knowledge snapshots and confirm time-sensitive details against official sources.",
+        "Monitor provider quotas and real user feedback; free-provider availability remains an external dependency."
       ],
       "setup": [
         "Read the repository README and environment example.",
@@ -137,7 +138,8 @@
         "Run the documented checks and production build before deploying to Vercel."
       ],
       "status": "Live demo",
-      "statusDetail": "Live AI and reading behaviour checked · dated guide fallback available"
+      "statusDetail": "Shared provider protection verified · sourced answers and saved college guide",
+      "releaseDocumentation": "https://github.com/AttaMuhammad-dev/Commecs-AI-Assistant/blob/main/RELEASE-20261024.md"
     },
     {
       "slug": "shape-up",
@@ -178,7 +180,7 @@
         "Dedicated MongoDB Atlas demo database"
       ],
       "contribution": "Built as a full-stack learning project. Launch work includes a serverless entrypoint, reusable database connections, request limits, deployment configuration and a visible demo notice. The professional repository retains the original history and attribution.",
-      "verification": "Checked on 20–21 October 2026: 27 backend tests, 14 frontend tests and the production build passed. All 57 defined live synthetic workflow checks passed, including account isolation, session invalidation, concurrent food additions, exports, email acceptance and account deletion. The owner confirmed the support email reached the inbox. Real AI coaching and follow-up responses succeeded in the final check; desktop and mobile layouts were reviewed.",
+      "verification": "24 October 2026: 27 backend and 14 frontend tests passed again. Seven fresh live account/log/access checks passed after redeployment, and a live AI response succeeded. The 57 defined synthetic workflow checks and owner-confirmed support inbox delivery from 20–21 October remain recorded in the release history; those 57 were not all rerun on this date.",
       "limitations": [
         "AI coaching is enabled. Free provider quotas and outages can still interrupt generation; the interface reports service errors clearly.",
         "Support email is enabled for signed-in users and rate limited. Use invented sample details when exploring.",
@@ -201,7 +203,8 @@
         "Build the frontend and deploy the repository’s Vercel configuration."
       ],
       "status": "Live demo",
-      "statusDetail": "Account, fitness and AI flows checked · support email delivery confirmed"
+      "statusDetail": "Account, fitness and AI flows checked · support email delivery confirmed",
+      "releaseDocumentation": "https://github.com/AttaMuhammad-dev/shape-up-mern/blob/main/RELEASE-20261024.md"
     },
     {
       "slug": "technova",
@@ -230,7 +233,8 @@
         "Product details and product comparison",
         "Cart with quantity management",
         "Firebase authentication and customer record workflows",
-        "Admin inventory screens and demonstration order flow"
+        "Admin inventory screens and demonstration order flow",
+        "Persistent administrator-managed categories shared across catalog and search"
       ],
       "architecture": [
         "Flutter application · browser-accessible demo",
@@ -239,7 +243,7 @@
         "Firestore catalog and customer records"
       ],
       "contribution": "Launch work restored web configuration, added explicit demo behavior, removed automatic public catalog seeding, tested Firestore access rules and fixed a cart quantity issue. The Flutter interface also exposes browser accessibility semantics.",
-      "verification": "I previously tested the Android application using an Android emulator. Native iOS testing has not been performed. In the current browser demo, the catalog, mobile layout, search, product details, add-to-cart, sign-in page and checkout form were checked. The cart quantity regression test and release web build passed. An Android release APK was also built and its package metadata and signature verified; the portfolio owner reported successful installation and account login on a physical Android phone on 18 October 2026. Additionally, Firestore rules passed 19 emulator access checks. New-customer signup and completed live order submission remain to be checked.",
+      "verification": "24 October 2026: four Flutter cart/category tests, nineteen Firestore emulator access checks and eleven live Firebase service checks passed. Live service checks covered customer registration/sign-in, profiles, a marked zero-value demo order and cross-customer/role-escalation denial. Flutter analysis reported no issues; release web and Android 3.0.1 builds succeeded. APK metadata and signature were verified. The owner confirmed installation/login of the earlier 3.0.0 APK on a physical Android phone on 18 October; testing of the updated package is a separate step. Native iOS remains untested.",
       "limitations": [
         "Demo checkout only: no real payment processing or fulfillment.",
         "AI API, external image uploads and public reviews are not enabled.",
@@ -251,8 +255,8 @@
         "Explore demonstration checkout using sample information only; no purchase is made."
       ],
       "next": [
-        "Complete remaining new-customer signup and sample-order checks.",
-        "Restore optional external integrations; broader Android workflows and native iOS testing remain future steps."
+        "Keep the pinned Flutter/Android toolchain maintained and test future releases on real devices.",
+        "Optional external integrations and native iOS distribution remain separate future work."
       ],
       "setup": [
         "Use a compatible Flutter SDK and install the package dependencies.",
@@ -261,14 +265,14 @@
         "Run the cart check, build a Flutter web release and deploy the static build/web directory."
       ],
       "status": "Live demo",
-      "statusDetail": "Android installation & login confirmed by owner · browser catalog and cart checked",
+      "statusDetail": "Updated Android demo · catalog, account and order service checks passed",
       "originalSource": "https://github.com/Jokerisstupid/TechNova-Ecommerce-App",
       "androidApk": {
-        "url": "https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App/releases/download/v3.0.0-demo.20261017/technova-android-demo-3.0.0.apk",
-        "version": "3.0.0",
+        "url": "https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App/releases/download/v3.0.1-demo.20261024/technova-android-demo-3.0.1.apk",
+        "version": "3.0.1",
         "size": "59.7 MB",
         "minimumAndroid": "7.0",
-        "sha256": "9ef1e876eb0b0e15cb99387769719d390ed04936164336177262fb95bd06fbb5"
+        "sha256": "eac358e17894633c6ecbdfdcc534537c5d2793bef527e148a5c9cd971cae5806"
       },
       "androidDeviceTest": {
         "date": "2026-10-18",
@@ -278,7 +282,8 @@
           "Account login"
         ],
         "result": "Successful"
-      }
+      },
+      "releaseDocumentation": "https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App/blob/main/RELEASE-20261024.md"
     },
     {
       "slug": "edupredict",
@@ -303,11 +308,11 @@
       "accent": "lilac",
       "problem": "Educational records can be difficult to turn into clear summaries. This learning project explores data preparation, role-based views and predictive examples using synthetic student data.",
       "features": [
-        "Student registration and role-based dashboards",
-        "Educational data and reporting workflows in the source",
-        "Synthetic models for risk, grade and demand examples",
-        "Staff-only analytics and prediction endpoints",
-        "Personal profile management for registered users"
+        "Student registration and current-role access checks",
+        "Owner-scoped CSV uploads, charts and demonstration model training",
+        "MongoDB-backed CSV reports and assignment attachments",
+        "Assigned-cohort submission and teacher grading workflows",
+        "Synthetic risk, grade and demand examples"
       ],
       "architecture": [
         "Server-rendered Flask interface",
@@ -315,13 +320,13 @@
         "Dedicated MongoDB Atlas demo database",
         "pandas / scikit-learn model workflows"
       ],
-      "contribution": "Launch work moved secrets to environment variables, removed automatic default accounts, restricted staff functions and rebuilt saved models with the current pinned library version. Runtime files are kept outside public static storage.",
-      "verification": "Live synthetic registration, student login, dashboard loading, profile saving and reading, and logout passed on 17 October 2026. A student request to the staff prediction endpoint was blocked. Five isolated deployment checks passed locally.",
+      "contribution": "Release work moved credentials out of source, removed default accounts and made new uploads, reports and attachments durable across serverless restarts. Ownership checks scope staff data and cohort workflows, while revoked roles and old password sessions are rejected.",
+      "verification": "24 October 2026: 22 isolated tests passed, including analyst ownership, durable uploads/reports/attachments, assigned-cohort access, grading limits, revoked roles, session invalidation and malformed input. Eight fresh live student/account checks passed. Elevated staff workflows used isolated synthetic fixtures; real institutional prediction accuracy and email delivery are not claimed.",
       "limitations": [
         "Use synthetic data only. Model demonstrations are not evidence of real-world student prediction accuracy.",
         "The risk score includes a heuristic; it is not a calibrated dropout probability.",
         "Public registration creates student accounts. Staff analytics are restricted; no public administrator password is supplied.",
-        "Email delivery is disabled. Uploaded files and generated reports on the free runtime are temporary."
+        "Email delivery is disabled. New uploads/reports/attachments are stored in MongoDB; legacy local-file records require migration or re-upload."
       ],
       "try": [
         "Browse the public project pages and architecture overview.",
@@ -329,18 +334,19 @@
         "Update your sample profile. Read the source for restricted staff workflows."
       ],
       "next": [
-        "Prepare a safe, read-only showcase for staff analytics.",
-        "Review remaining reporting, assignment and upload workflows."
+        "Maintain synthetic demonstration data, account roles and dependency versions.",
+        "A safe read-only staff showcase and separately configured email delivery remain future additions."
       ],
       "setup": [
         "Install the pinned Python dependencies and read the repository setup notes.",
         "Set MONGO_URI, DB_NAME and a strong SECRET_KEY privately. Keep email disabled until configured.",
         "Use synthetic datasets and deliberately provision any staff roles; public registration is student-only.",
-        "Deploy the Flask entrypoint with the provided Vercel configuration. Use durable storage before relying on uploaded files."
+        "Deploy the Flask entrypoint with the provided Vercel configuration. New records use bounded MongoDB-backed storage; migrate any legacy local-file records."
       ],
       "status": "Live demo",
-      "statusDetail": "Student account and profile flows checked · synthetic examples",
-      "originalSource": "https://github.com/Jokerisstupid/EduPredict"
+      "statusDetail": "Durable data workflows · staff isolation tested with synthetic fixtures",
+      "originalSource": "https://github.com/Jokerisstupid/EduPredict",
+      "releaseDocumentation": "https://github.com/AttaMuhammad-dev/EduPredict/blob/main/RELEASE-20261024.md"
     }
   ],
   "googleSiteVerification": "wQIL13Sp_4Kel6oyHozxkvAIXvvxPIrGZMMq9Z-CRTE"
