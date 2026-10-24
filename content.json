@@ -117,7 +117,7 @@
         "Source-linked response / saved guide fallback"
       ],
       "contribution": "Developed with an AI-assisted workflow, with hands-on work in testing, builds, debugging and deployment. The source includes knowledge maintenance and operational documentation.",
-      "verification": "24 October 2026: the automated suite, type checks and production build passed. Shared MongoDB readiness was verified on the live deployment. A sampled live check caught a Roman Urdu location fallback gap; simple address questions now use the saved official contact page without spending provider quota. Earlier reading-position checks confirm new answers stay at their beginning.",
+      "verification": "24 October 2026: 410 automated tests, type checks and the production build passed. Shared MongoDB readiness was verified on the live deployment. Three final sampled live checks passed, including Roman Urdu location, campus rules and a private-record request boundary. Simple address questions use the saved official contact page without spending provider quota. Earlier reading-position checks confirm new answers stay at their beginning.",
       "limitations": [
         "An independent student project; it is not presented as an official college service.",
         "Confirm fees, dates, eligibility and other time-sensitive information with the college.",
@@ -301,9 +301,10 @@
         "pandas",
         "scikit-learn"
       ],
-      "image": "edupredict.jpg",
-      "imageAlt": "EduPredict public home page introducing the educational analytics project",
+      "image": "edupredict-showcase.png",
+      "imageAlt": "EduPredict's read-only analytics showcase with clearly labeled synthetic profiles and a sample CSV download",
       "live": "https://edupredict-demo.vercel.app",
+      "showcase": "https://edupredict-demo.vercel.app/showcase",
       "source": "https://github.com/AttaMuhammad-dev/EduPredict",
       "accent": "lilac",
       "problem": "Educational records can be difficult to turn into clear summaries. This learning project explores data preparation, role-based views and predictive examples using synthetic student data.",
@@ -312,7 +313,8 @@
         "Owner-scoped CSV uploads, charts and demonstration model training",
         "MongoDB-backed CSV reports and assignment attachments",
         "Assigned-cohort submission and teacher grading workflows",
-        "Synthetic risk, grade and demand examples"
+        "Synthetic risk, grade and demand examples",
+        "A public read-only analytics showcase and synthetic sample CSV download"
       ],
       "architecture": [
         "Server-rendered Flask interface",
@@ -321,7 +323,7 @@
         "pandas / scikit-learn model workflows"
       ],
       "contribution": "Release work moved credentials out of source, removed default accounts and made new uploads, reports and attachments durable across serverless restarts. Ownership checks scope staff data and cohort workflows, while revoked roles and old password sessions are rejected.",
-      "verification": "24 October 2026: 22 isolated tests passed, including analyst ownership, durable uploads/reports/attachments, assigned-cohort access, grading limits, revoked roles, session invalidation and malformed input. Eight fresh live student/account checks passed. Elevated staff workflows used isolated synthetic fixtures; real institutional prediction accuracy and email delivery are not claimed.",
+      "verification": "24 October 2026: 24 isolated tests passed, including analyst ownership, durable uploads/reports/attachments, assigned-cohort access, grading limits, revoked roles, session invalidation, malformed input and database-independent showcase fixtures. Eight fresh live student/account checks passed; the public showcase and sample download were also checked. Elevated staff workflows used isolated synthetic fixtures; real institutional prediction accuracy and email delivery are not claimed.",
       "limitations": [
         "Use synthetic data only. Model demonstrations are not evidence of real-world student prediction accuracy.",
         "The risk score includes a heuristic; it is not a calibrated dropout probability.",
@@ -329,13 +331,13 @@
         "Email delivery is disabled. New uploads/reports/attachments are stored in MongoDB; legacy local-file records require migration or re-upload."
       ],
       "try": [
-        "Browse the public project pages and architecture overview.",
+        "Open the public analytics showcase and download its synthetic sample CSV.",
         "Register with invented sample details and sign in to the student area.",
         "Update your sample profile. Read the source for restricted staff workflows."
       ],
       "next": [
         "Maintain synthetic demonstration data, account roles and dependency versions.",
-        "A safe read-only staff showcase and separately configured email delivery remain future additions."
+        "Maintain the read-only showcase alongside application changes; email delivery requires separate configuration."
       ],
       "setup": [
         "Install the pinned Python dependencies and read the repository setup notes.",

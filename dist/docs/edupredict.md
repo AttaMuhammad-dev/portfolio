@@ -19,6 +19,7 @@ Educational records can be difficult to turn into clear summaries. This learning
 - MongoDB-backed CSV reports and assignment attachments
 - Assigned-cohort submission and teacher grading workflows
 - Synthetic risk, grade and demand examples
+- A public read-only analytics showcase and synthetic sample CSV download
 
 ## Architecture
 
@@ -33,7 +34,7 @@ Release work moved credentials out of source, removed default accounts and made 
 
 ## Try the demo
 
-1. Browse the public project pages and architecture overview.
+1. Open the public analytics showcase and download its synthetic sample CSV.
 2. Register with invented sample details and sign in to the student area.
 3. Update your sample profile. Read the source for restricted staff workflows.
 
@@ -48,7 +49,7 @@ Use the repository README for commands. Source links point to the prepared proje
 
 ## Verification
 
-24 October 2026: 22 isolated tests passed, including analyst ownership, durable uploads/reports/attachments, assigned-cohort access, grading limits, revoked roles, session invalidation and malformed input. Eight fresh live student/account checks passed. Elevated staff workflows used isolated synthetic fixtures; real institutional prediction accuracy and email delivery are not claimed.
+24 October 2026: 24 isolated tests passed, including analyst ownership, durable uploads/reports/attachments, assigned-cohort access, grading limits, revoked roles, session invalidation, malformed input and database-independent showcase fixtures. Eight fresh live student/account checks passed; the public showcase and sample download were also checked. Elevated staff workflows used isolated synthetic fixtures; real institutional prediction accuracy and email delivery are not claimed.
 
 ## Current limitations
 
@@ -60,4 +61,4 @@ Use the repository README for commands. Source links point to the prepared proje
 ## Next improvements
 
 - Maintain synthetic demonstration data, account roles and dependency versions.
-- A safe read-only staff showcase and separately configured email delivery remain future additions.
+- Maintain the read-only showcase alongside application changes; email delivery requires separate configuration.

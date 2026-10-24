@@ -48,7 +48,7 @@ Use the repository README for commands. Source links point to the prepared proje
 
 ## Verification
 
-24 October 2026: the automated suite, type checks and production build passed. Shared MongoDB readiness was verified on the live deployment. A sampled live check caught a Roman Urdu location fallback gap; simple address questions now use the saved official contact page without spending provider quota. Earlier reading-position checks confirm new answers stay at their beginning.
+24 October 2026: 410 automated tests, type checks and the production build passed. Shared MongoDB readiness was verified on the live deployment. Three final sampled live checks passed, including Roman Urdu location, campus rules and a private-record request boundary. Simple address questions use the saved official contact page without spending provider quota. Earlier reading-position checks confirm new answers stay at their beginning.
 
 ## Current limitations
 
