@@ -50,7 +50,7 @@ Use the repository README for commands. Source links point to the prepared proje
 
 ## Verification
 
-24 October 2026: 38 isolated tests passed across durable data, staff ownership/cohort boundaries, sessions, input validation, public showcase and SMTP delivery guards. Eight earlier live student/account checks and the public showcase/sample download passed. The configured SMTP service accepted a synthetic support message; actual inbox receipt is checked separately with the owner. Staff workflows used isolated synthetic fixtures; real institutional predictive accuracy is not established.
+24 October 2026: 38 isolated tests passed across durable data, staff ownership/cohort boundaries, sessions, input validation, public showcase and SMTP delivery guards. Eight earlier live student/account checks and the public showcase/sample download passed. The configured SMTP service accepted a synthetic support message and the owner confirmed it reached the inbox. Staff workflows used isolated synthetic fixtures; real institutional predictive accuracy is not established.
 
 ## Current limitations
 

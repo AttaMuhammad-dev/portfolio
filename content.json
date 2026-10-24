@@ -328,7 +328,7 @@
         "pandas / scikit-learn model workflows"
       ],
       "contribution": "Release work moved credentials out of source, removed default accounts and made new uploads, reports and attachments durable across serverless restarts. Ownership checks scope staff data and cohort workflows, while revoked roles and old password sessions are rejected.",
-      "verification": "24 October 2026: 38 isolated tests passed across durable data, staff ownership/cohort boundaries, sessions, input validation, public showcase and SMTP delivery guards. Eight earlier live student/account checks and the public showcase/sample download passed. The configured SMTP service accepted a synthetic support message; actual inbox receipt is checked separately with the owner. Staff workflows used isolated synthetic fixtures; real institutional predictive accuracy is not established.",
+      "verification": "24 October 2026: 38 isolated tests passed across durable data, staff ownership/cohort boundaries, sessions, input validation, public showcase and SMTP delivery guards. Eight earlier live student/account checks and the public showcase/sample download passed. The configured SMTP service accepted a synthetic support message and the owner confirmed it reached the inbox. Staff workflows used isolated synthetic fixtures; real institutional predictive accuracy is not established.",
       "limitations": [
         "Use synthetic data only. Model demonstrations are not evidence of real-world student prediction accuracy.",
         "The risk score includes a heuristic; it is not a calibrated dropout probability.",
