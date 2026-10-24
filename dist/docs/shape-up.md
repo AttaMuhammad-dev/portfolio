@@ -21,6 +21,7 @@ Fitness information and daily progress are easy to scatter across different tool
 - AI coaching with conversation context, bounded retries and clear provider-error states
 - Full account data export and password-confirmed permanent account deletion
 - Authenticated support email, shared theme and device reminder preferences
+- Saved reminder sound selection, bounded repeat playback and Stop / replay controls
 
 ## Architecture
 
@@ -50,7 +51,7 @@ Use the repository README for commands. Source links point to the prepared proje
 
 ## Verification
 
-24 October 2026: 27 backend and 14 frontend tests passed again. Seven fresh live account/log/access checks passed after redeployment, and a live AI response succeeded. The 57 defined synthetic workflow checks and owner-confirmed support inbox delivery from 20–21 October remain recorded in the release history; those 57 were not all rerun on this date.
+24 October 2026: 27 backend and 14 frontend tests passed again. Seven fresh live account/log/access checks passed after redeployment, and a live AI response succeeded. The 57 defined synthetic workflow checks and owner-confirmed support inbox delivery from 20–21 October remain recorded in the release history; those 57 were not all rerun on this date. On 24 October, the owner confirmed motion tracking and reminders on their device. A follow-up sound fix connected the chosen library track to real alerts, added bounded repeating playback and repaired the Alerts cold-load state; focused frontend checks cover selection, repeat, dismissal and browser-block recovery.
 
 ## Current limitations
 

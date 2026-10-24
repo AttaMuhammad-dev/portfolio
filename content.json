@@ -3,7 +3,7 @@
   "role": "Full-Stack Developer | Web & Cross-Platform Mobile Applications",
   "location": "Karachi, Pakistan",
   "updated": "2026-10-24",
-  "profileUpdatedAt": "2026-10-17T15:14:47Z",
+  "profileUpdatedAt": "2026-10-24T17:20:58Z",
   "origin": "https://atta-muhammad-portfolio.vercel.app",
   "linkedin": "https://www.linkedin.com/in/atta-muhammad-729b0b315/",
   "github": "https://github.com/AttaMuhammad-dev",
@@ -171,7 +171,8 @@
         "Nutrition-related tools and progress views",
         "AI coaching with conversation context, bounded retries and clear provider-error states",
         "Full account data export and password-confirmed permanent account deletion",
-        "Authenticated support email, shared theme and device reminder preferences"
+        "Authenticated support email, shared theme and device reminder preferences",
+        "Saved reminder sound selection, bounded repeat playback and Stop / replay controls"
       ],
       "architecture": [
         "React + Redux Toolkit frontend",
@@ -180,7 +181,7 @@
         "Dedicated MongoDB Atlas demo database"
       ],
       "contribution": "Built as a full-stack learning project. Launch work includes a serverless entrypoint, reusable database connections, request limits, deployment configuration and a visible demo notice. The professional repository retains the original history and attribution.",
-      "verification": "24 October 2026: 27 backend and 14 frontend tests passed again. Seven fresh live account/log/access checks passed after redeployment, and a live AI response succeeded. The 57 defined synthetic workflow checks and owner-confirmed support inbox delivery from 20–21 October remain recorded in the release history; those 57 were not all rerun on this date.",
+      "verification": "24 October 2026: 27 backend and 14 frontend tests passed again. Seven fresh live account/log/access checks passed after redeployment, and a live AI response succeeded. The 57 defined synthetic workflow checks and owner-confirmed support inbox delivery from 20–21 October remain recorded in the release history; those 57 were not all rerun on this date. On 24 October, the owner confirmed motion tracking and reminders on their device. A follow-up sound fix connected the chosen library track to real alerts, added bounded repeating playback and repaired the Alerts cold-load state; focused frontend checks cover selection, repeat, dismissal and browser-block recovery.",
       "limitations": [
         "AI coaching is enabled. Free provider quotas and outages can still interrupt generation; the interface reports service errors clearly.",
         "Support email is enabled for signed-in users and rate limited. Use invented sample details when exploring.",
@@ -247,11 +248,11 @@
         "Node service routes · Firebase ID-token verification · private Gemini / Cloudinary credentials"
       ],
       "contribution": "Launch work restored web configuration, added explicit demo behavior, removed automatic public catalog seeding, tested Firestore access rules and fixed a cart quantity issue. The Flutter interface also exposes browser accessibility semantics. The October 24 integration update moved AI and media uploads behind verified customer sessions, added administrator moderation for public reviews and published Android 3.0.2.",
-      "verification": "24 October 2026: four Flutter tests, 12 Node service tests and 35 Firestore emulator access/privacy checks passed. Twelve new live checks verified a signed-in Gemini reply, a signed Cloudinary sample upload and retrieval, authentication, catalog-upload restrictions and private review protection. Flutter analysis is clean; web and Android 3.0.2 builds, APK metadata, signature and upload checksum were verified. The owner handles fresh physical Android and iOS/browser testing; native iOS is not supplied.",
+      "verification": "24 October 2026: four Flutter tests, 12 Node service tests and 35 Firestore emulator access/privacy checks passed. Twelve new live checks verified a signed-in Gemini reply, a signed Cloudinary sample upload and retrieval, authentication, catalog-upload restrictions and private review protection. Flutter analysis is clean; web and Android 3.0.2 builds, APK metadata, signature and upload checksum were verified. The owner reported successful login and adding products to the cart in the updated Android APK and iOS browser demo on 24 October. This does not claim native iOS testing or testing every device feature.",
       "limitations": [
         "Demo checkout only: no real payment processing or fulfillment.",
         "AI and image services depend on free provider quotas/availability. Burst limits are per warm server process. Public reviews appear only after administrator approval.",
-        "Android 3.0.2 physical testing is handled by the owner. Earlier installation/login was confirmed on 18 October. iPhone/iPad use the browser demo via Add to Home Screen; no native iOS package is supplied."
+        "Owner-confirmed Android 3.0.2 and iOS browser login/cart checks passed on 24 October 2026. iPhone/iPad use the browser demo via Add to Home Screen; no native iOS package is supplied."
       ],
       "try": [
         "Open the live catalog, select a category and search for a product.",
@@ -260,7 +261,7 @@
       ],
       "next": [
         "Maintain provider quotas, moderation and the pinned Flutter/Android dependencies.",
-        "The owner handles physical Android and iOS/browser checks; native iOS distribution remains separate."
+        "Continue device checks as features change; native iOS signing and distribution remain separate."
       ],
       "setup": [
         "Install the pinned Flutter and Node dependencies; configure your own Firebase project and tested access rules.",
@@ -279,15 +280,26 @@
         "sha256": "815741bbc638b72e7cc22433a8c555e2ccf17646898a983164c9bf03f6864fe3"
       },
       "androidDeviceTest": {
-        "date": "2026-10-18",
+        "date": "2026-10-24",
         "reportedBy": "Portfolio owner",
+        "version": "3.0.2",
         "scope": [
-          "APK installation on physical Android phone",
-          "Account login"
+          "Account login in the updated Android APK",
+          "Adding products to the cart"
         ],
         "result": "Successful"
       },
-      "releaseDocumentation": "https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App/blob/main/RELEASE-20261024.md"
+      "releaseDocumentation": "https://github.com/AttaMuhammad-dev/TechNova-Ecommerce-App/blob/main/RELEASE-20261024.md",
+      "iosBrowserTest": {
+        "date": "2026-10-24",
+        "reportedBy": "Portfolio owner",
+        "scope": [
+          "Account login in the iOS browser demo",
+          "Adding products to the cart"
+        ],
+        "result": "Successful",
+        "nativePackage": false
+      }
     },
     {
       "slug": "edupredict",
@@ -356,5 +368,8 @@
       "releaseDocumentation": "https://github.com/AttaMuhammad-dev/EduPredict/blob/main/RELEASE-20261024.md"
     }
   ],
-  "googleSiteVerification": "wQIL13Sp_4Kel6oyHozxkvAIXvvxPIrGZMMq9Z-CRTE"
+  "googleSiteVerification": "wQIL13Sp_4Kel6oyHozxkvAIXvvxPIrGZMMq9Z-CRTE",
+  "email": "attamuhammad2008@gmail.com",
+  "telephone": "+92 313 8237102",
+  "telephoneHref": "tel:+923138237102"
 }

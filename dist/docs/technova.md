@@ -64,15 +64,15 @@ Use the repository README for commands. Source links point to the prepared proje
 
 ## Verification
 
-24 October 2026: four Flutter tests, 12 Node service tests and 35 Firestore emulator access/privacy checks passed. Twelve new live checks verified a signed-in Gemini reply, a signed Cloudinary sample upload and retrieval, authentication, catalog-upload restrictions and private review protection. Flutter analysis is clean; web and Android 3.0.2 builds, APK metadata, signature and upload checksum were verified. The owner handles fresh physical Android and iOS/browser testing; native iOS is not supplied.
+24 October 2026: four Flutter tests, 12 Node service tests and 35 Firestore emulator access/privacy checks passed. Twelve new live checks verified a signed-in Gemini reply, a signed Cloudinary sample upload and retrieval, authentication, catalog-upload restrictions and private review protection. Flutter analysis is clean; web and Android 3.0.2 builds, APK metadata, signature and upload checksum were verified. The owner reported successful login and adding products to the cart in the updated Android APK and iOS browser demo on 24 October. This does not claim native iOS testing or testing every device feature.
 
 ## Current limitations
 
 - Demo checkout only: no real payment processing or fulfillment.
 - AI and image services depend on free provider quotas/availability. Burst limits are per warm server process. Public reviews appear only after administrator approval.
-- Android 3.0.2 physical testing is handled by the owner. Earlier installation/login was confirmed on 18 October. iPhone/iPad use the browser demo via Add to Home Screen; no native iOS package is supplied.
+- Owner-confirmed Android 3.0.2 and iOS browser login/cart checks passed on 24 October 2026. iPhone/iPad use the browser demo via Add to Home Screen; no native iOS package is supplied.
 
 ## Next improvements
 
 - Maintain provider quotas, moderation and the pinned Flutter/Android dependencies.
-- The owner handles physical Android and iOS/browser checks; native iOS distribution remains separate.
+- Continue device checks as features change; native iOS signing and distribution remain separate.

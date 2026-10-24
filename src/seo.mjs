@@ -18,6 +18,7 @@ export function pageStructuredData(data,path,title,description,profile){
     profilePage.dateModified=data.profileUpdatedAt;
     profilePage.inLanguage='en';profilePage.isPartOf={'@id':websiteId};
     profilePage.mainEntity.description='Atta Muhammad is a full-stack web and cross-platform mobile developer and Computer Science student based in Karachi, Pakistan.';
+    profilePage.mainEntity.email=data.email;profilePage.mainEntity.telephone=data.telephone;
     profilePage.mainEntity.knowsAbout=['Web development','MERN stack','React','TypeScript','Node.js','Python','Flask','Flutter','Dart','Firebase','Retrieval-augmented generation'];
     return {'@context':'https://schema.org','@graph':[
       {'@type':'WebSite','@id':websiteId,url:pageUrl,name:data.name,alternateName:'Atta Muhammad Portfolio',inLanguage:'en',publisher:{'@id':personId}},
@@ -28,7 +29,7 @@ export function pageStructuredData(data,path,title,description,profile){
   const label=project?.name??(path==='/journey/'?'Journey':'Notes & Updates');
   const breadcrumbId=pageUrl+'#breadcrumb';
   const webpage={'@type':path==='/journey/'?'AboutPage':'WebPage','@id':pageId,url:pageUrl,name:title,description,inLanguage:'en',isPartOf:{'@id':websiteId},about:{'@id':personId},author:{'@id':personId},breadcrumb:{'@id':breadcrumbId}};
-  const graph=[{'@type':'Person','@id':personId,name:data.name,url:origin+'/',sameAs:[data.linkedin,data.github]},webpage,{'@type':'BreadcrumbList','@id':breadcrumbId,itemListElement:[
+  const graph=[{'@type':'Person','@id':personId,name:data.name,url:origin+'/',email:data.email,telephone:data.telephone,sameAs:[data.linkedin,data.github]},webpage,{'@type':'BreadcrumbList','@id':breadcrumbId,itemListElement:[
     {'@type':'ListItem',position:1,name:'Atta Muhammad',item:origin+'/'},
     {'@type':'ListItem',position:2,name:label,item:pageUrl}
   ]}];
